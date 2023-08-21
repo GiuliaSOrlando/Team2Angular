@@ -29,6 +29,9 @@ export class UsersService {
 
   // Put method
   updateUser(userId: string, userData: IUser) {
-    return this.http.put(`https://api.example.com/users/${userId}`, userData);
+    return this.http.put(
+      `https://striveschool-api.herokuapp.com/api/profile/${userId}`,
+      userData
+    );
   }
 }
