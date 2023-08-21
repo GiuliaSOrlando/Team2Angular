@@ -1,4 +1,14 @@
-<form (ngSubmit)="getSpecificProfile(userId)">
-  <input type="text" [(ngModel)]="userId" name="user" />
+<form (ngSubmit)="getSpecificProfileByEmail(email)">
+  <input type="email" [(ngModel)]="email" name="email" placeholder="email" />
   <button type="submit">Invia</button>
+</form>
+
+<form (ngSubmit)="getSpecificProfileByNameAndSurname(fullName)">
+  <input
+    type="text"
+    [(ngModel)]="fullName"
+    name="fullName"
+    placeholder="Full Name"
+  />
+  <button type="submit">Search</button>
 </form>
