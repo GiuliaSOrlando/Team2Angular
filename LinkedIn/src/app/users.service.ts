@@ -26,4 +26,9 @@ export class UsersService {
     const apiUrl = `https://striveschool-api.herokuapp.com/api/profile/${userId}`;
     return this.http.get<IUser>(apiUrl);
   }
+
+  // Put method
+  updateUser(userId: string, userData: IUser) {
+    return this.http.put(`https://api.example.com/users/${userId}`, userData);
+  }
 }

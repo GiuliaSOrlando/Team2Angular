@@ -1,4 +1,4 @@
-<form>
-  <input type="text" [(ngModel)]="userId" />
-  <button type="submit" (click)="getSpecificProfile(userId)">Invia</button>
+<form (ngSubmit)="getSpecificProfile(userId)">
+  <input type="text" [(ngModel)]="userId" name="user" />
+  <button type="submit">Invia</button>
 </form>
