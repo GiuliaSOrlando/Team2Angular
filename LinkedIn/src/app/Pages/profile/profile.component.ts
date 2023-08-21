@@ -12,6 +12,7 @@ import { environment } from 'src/environments/environment';
 export class ProfileComponent {
   constructor(private userSVC: UsersService) {}
   userId: string = '';
+  user!: IUser;
   email: string = '';
   name: string = '';
   surname: string = '';
@@ -38,6 +39,7 @@ export class ProfileComponent {
   getMyProfile() {
     this.userSVC.getSingleUser().subscribe(
       (user: IUser) => {
+        this.user = user;
         console.log(user);
       },
       (error) => {
