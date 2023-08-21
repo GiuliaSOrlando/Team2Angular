@@ -8,9 +8,10 @@ import { NavbarComponent } from './Components/navbar/navbar.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { UsersInterceptor } from './users.interceptor';
 import { FormsModule } from '@angular/forms';
+import { TestUpdateComponent } from './pages/test-update/test-update.component';
 
 @NgModule({
-  declarations: [AppComponent, ProfileComponent, NavbarComponent],
+  declarations: [AppComponent, ProfileComponent, NavbarComponent, TestUpdateComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: UsersInterceptor, multi: true },

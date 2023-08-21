@@ -9,6 +9,8 @@ import { IUser } from './Components/Interfaces/user';
 export class UsersService {
   constructor(private http: HttpClient) {}
 
+  userData!: IUser;
+
   // Get all users
   getUsers(): Observable<IUser[]> {
     const apiUrl = 'https://striveschool-api.herokuapp.com/api/profile/';
@@ -28,10 +30,8 @@ export class UsersService {
   }
 
   // Put method
-  updateUser(userId: string, userData: IUser) {
-    return this.http.put(
-      `https://striveschool-api.herokuapp.com/api/profile/${userId}`,
-      userData
-    );
+  updateUser(data: Partial<IUser>) {
+    const apiUrl = 'https://striveschool-api.herokuapp.com/api/profile/';
+    return this.http.put<IUser>(apiUrl, data);
   }
 }

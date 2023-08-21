@@ -51,15 +51,4 @@ export class ProfileComponent {
       }
     );
   }
-
-  // updateProfile() {
-  //   this.userSVC.updateUser().subscribe(
-  //     (user: IUser) => {
-  //       console.log(user);
-  //     },
-  //     (error) => {
-  //       console.error('Error:', error);
-  //     }
-  //   );
-  // }
 }
