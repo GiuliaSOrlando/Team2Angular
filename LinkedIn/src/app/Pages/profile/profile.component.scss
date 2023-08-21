@@ -80,16 +80,24 @@ p {
 .blocchi {
   display: flex;
   flex-direction: row;
-  margin-top: 20px;
+  margin-top: 25px;
 }
 .blocco1 {
   background-color: #dde7f1;
   border: 5px;
   border-radius: 18px;
+  width: 340px;
+  height: 90px;
 }
 
 .blocco2 {
-  border: 0.7px solid #737475;
+  border: 0.7px solid #a8a8a8;
   border-radius: 18px;
   margin-left: 30px;
+  width: 440px;
+}
+
+.blocchi p {
+  margin-left: 20px;
+  margin-top: -7px;
 }
