@@ -27,6 +27,11 @@ export class UsersService {
     return this.http.get<IUser>(apiUrl);
   }
 
+  getUserByEmail(email: string): Observable<IUser> {
+    const url = `https://striveschool-api.herokuapp.com/api/profile/${email}`;
+    return this.http.get<IUser>(url);
+  }
+
   // Put method
   updateUser(userId: string, userData: IUser) {
     return this.http.put(

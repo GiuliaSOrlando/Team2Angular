@@ -1,5 +1,5 @@
-<form (ngSubmit)="getSpecificProfile(userId)">
-  <input type="text" [(ngModel)]="userId" name="user" />
+<form (ngSubmit)="getSpecificProfileByEmail(email)">
+  <input type="email" [(ngModel)]="email" name="email" placeholder="email" />
   <button type="submit">Invia</button>
 </form>
 
@@ -50,3 +50,16 @@
     <div class="blocco2">Fai Sapere che...</div>
   </div>
 </header>
+<form (ngSubmit)="getSpecificProfileByNameAndSurname(fullName)">
+  <input
+    type="text"
+    [(ngModel)]="fullName"
+    name="fullName"
+    placeholder="Full Name"
+  />
+  <button type="submit">Cerca</button>
+</form>
+
+<p>{{ user.name }}</p>
+<p>{{ user.surname }}</p>
+<p>{{ user.email }}</p>
