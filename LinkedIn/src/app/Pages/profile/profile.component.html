@@ -8,20 +8,26 @@
       <h4>{{ user.name }} {{ user.surname }}</h4>
       <p class="job">{{ user.title }}</p>
       <p>
-        Abito a {{ user.area }}
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          fill="currentColor"
-          class="bi bi-dot"
-          viewBox="0 0 16 16"
-        >
-          <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
-        </svg>
-        Informazioni di contatto
+        Abito a {{ user.area }} •
+        <button class="btn btn-link" (click)="openModal()">Contact info</button>
       </p>
     </div>
+
+    <ng-container *ngIf="showModal">
+      <div
+        class="modal fade show"
+        style="display: block"
+        id="contactModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="contactModalLabel"
+        aria-hidden="true"
+      >
+        <p>Email: {{ user.email }}</p>
+        <button class="btn btn-secondary" (click)="closeModal()">Close</button>
+      </div>
+      <div class="modal-backdrop fade show"></div>
+    </ng-container>
     <div class="element">
       <div class="info1">Disponibile per</div>
       <div class="info2">Aggiungi sezione del profilo</div>

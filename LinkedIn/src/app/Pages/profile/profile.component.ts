@@ -34,6 +34,15 @@ export class ProfileComponent {
       }
     );
   }
+  showModal = false;
+
+  openModal() {
+    this.showModal = true;
+  }
+
+  closeModal() {
+    this.showModal = false;
+  }
 
   // updateProfile() {
   //   this.userSVC.updateUser().subscribe(
