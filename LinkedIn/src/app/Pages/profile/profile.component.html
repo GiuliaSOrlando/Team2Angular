@@ -1,1 +1,4 @@
-<p>profile works!</p>
+<form>
+  <input type="text" [(ngModel)]="userId" />
+  <button type="submit" (click)="getSpecificProfile(userId)">Invia</button>
+</form>
