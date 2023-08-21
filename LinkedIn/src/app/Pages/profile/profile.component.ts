@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IUser } from 'src/app/Components/Interfaces/user';
 import { UsersService } from 'src/app/users.service';
 import { environment } from 'src/environments/environment';
@@ -10,7 +11,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent {
-  constructor(private userSVC: UsersService) {}
+  constructor(private userSVC: UsersService, private modalService: NgbModal) {}
   userId: string = '';
   user!: IUser;
   email: string = '';
@@ -34,14 +35,20 @@ export class ProfileComponent {
       }
     );
   }
-  showModal = false;
+
+  @ViewChild('contactModal') contactModal!: any;
 
   openModal() {
-    this.showModal = true;
+    this.modalService
+      .open(this.contactModal, { ariaLabelledBy: 'modal-basic-title' })
+      .result.then(
+        (result) => {},
+        (reason) => {}
+      );
   }
 
   closeModal() {
-    this.showModal = false;
+    this.modalService.dismissAll();
   }
 
   // updateProfile() {

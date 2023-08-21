@@ -13,21 +13,29 @@
       </p>
     </div>
 
-    <ng-container *ngIf="showModal">
-      <div
-        class="modal fade show"
-        style="display: block"
-        id="contactModal"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="contactModalLabel"
-        aria-hidden="true"
-      >
-        <p>Email: {{ user.email }}</p>
-        <button class="btn btn-secondary" (click)="closeModal()">Close</button>
+    <ng-template #contactModal let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title">{{ user.name }} {{ user.surname }}</h4>
+        <button
+          type="button"
+          class="close"
+          aria-label="Close"
+          (click)="closeModal()"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-      <div class="modal-backdrop fade show"></div>
-    </ng-container>
+      <div class="modal-body">
+        <h5>Contact Info</h5>
+        <p>Your profile: {{ user.username }}</p>
+        <p>Email: {{ user.email }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">
+          Close
+        </button>
+      </div>
+    </ng-template>
     <div class="element">
       <div class="info1">Disponibile per</div>
 
