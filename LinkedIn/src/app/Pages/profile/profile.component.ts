@@ -12,6 +12,12 @@ import { environment } from 'src/environments/environment';
 export class ProfileComponent {
   constructor(private userSVC: UsersService) {}
   userId: string = '';
+  user!: IUser;
+  email: string = '';
+  name: string = '';
+  surname: string = '';
+  fullName: string = '';
+  users: IUser[] = [];
 
   ngOnInit() {
     this.getAllUsers();
@@ -21,6 +27,7 @@ export class ProfileComponent {
   getAllUsers() {
     this.userSVC.getUsers().subscribe(
       (users: IUser[]) => {
+        this.users = users;
         console.log(users);
       },
       (error) => {
@@ -32,6 +39,7 @@ export class ProfileComponent {
   getMyProfile() {
     this.userSVC.getSingleUser().subscribe(
       (user: IUser) => {
+        this.user = user;
         console.log(user);
       },
       (error) => {
@@ -51,4 +59,43 @@ export class ProfileComponent {
       }
     );
   }
+
+  getSpecificProfileByEmail(email: string) {
+    const user = this.users.find((user) => user.email === email);
+    console.log('Found user:', user);
+
+    if (user) {
+      console.log('User ID:', user._id);
+      this.getSpecificProfile(user._id);
+    } else {
+      console.log('User not found');
+    }
+  }
+
+  getSpecificProfileByNameAndSurname(fullName: string) {
+    const [name, surname] = fullName.split(' ');
+
+    const user = this.users.find(
+      (user) => user.name === name && user.surname === surname
+    );
+    console.log('Found user:', user);
+
+    if (user) {
+      console.log('User ID:', user._id);
+      this.getSpecificProfile(user._id);
+    } else {
+      console.log('User not found');
+    }
+  }
+
+  // updateProfile() {
+  //   this.userSVC.updateUser().subscribe(
+  //     (user: IUser) => {
+  //       console.log(user);
+  //     },
+  //     (error) => {
+  //       console.error('Error:', error);
+  //     }
+  //   );
+  // }
 }
