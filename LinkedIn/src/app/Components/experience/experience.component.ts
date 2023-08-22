@@ -75,4 +75,29 @@ export class ExperienceComponent {
 
     this.modalService.dismissAll();
   }
+
+  @ViewChild('content') modalContent!: any;
+
+  openModal(experienceId: string) {
+    const selectedExperience = this.experiences.find(
+      (exp) => exp._id === experienceId
+    );
+    if (selectedExperience) {
+      this.newExperience = { ...selectedExperience };
+      this.modalService.open(this.modalContent, { size: 'lg' });
+    }
+  }
+
+  // Method to modify an experience
+  modifyExperience(userId: string, expId: string, formData: IExperience): void {
+    this.experienceSVC.modifyExperience(userId, expId, formData).subscribe(
+      () => {
+        console.log(`Experience with ID ${expId} modified successfully.`);
+        this.modalService.dismissAll();
+      },
+      (error) => {
+        console.error(`Failed to modify experience with ID ${expId}.`, error);
+      }
+    );
+  }
 }
