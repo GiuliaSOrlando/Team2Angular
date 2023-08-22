@@ -9,9 +9,10 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { UsersInterceptor } from './users.interceptor';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ExperienceComponent } from './Components/experience/experience.component';
 
 @NgModule({
-  declarations: [AppComponent, ProfileComponent, NavbarComponent],
+  declarations: [AppComponent, ProfileComponent, NavbarComponent, ExperienceComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
