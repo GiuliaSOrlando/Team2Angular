@@ -14,7 +14,11 @@
     <p>Area: {{ experience.area }}</p>
     <p>Data di inizio: {{ experience.startDate | date }}</p>
     <p>Data di fine: {{ experience.endDate | date }}</p>
-    <button class="btn btn-link" (click)="openModifyModal(experience._id)">
+    <button (click)="deleteExperience(experience._id)" class="btn btn-danger">
+      Delete
+    </button>
+
+    <button class="btn btn-primary" (click)="openModifyModal(experience._id)">
       Modify
     </button>
   </div>
@@ -120,6 +124,6 @@
   </ng-template>
 
   <button class="btn btn-lg btn-outline-primary ms-4" (click)="buttonHandler()">
-    {{ isExperiencePage ? "Modify experiences" : "Go to experience section" }}
+    {{ isExperiencePage ? "Add new experience" : "Go to experience section" }}
   </button>
 </div>
