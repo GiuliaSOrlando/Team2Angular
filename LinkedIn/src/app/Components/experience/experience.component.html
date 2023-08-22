@@ -1,0 +1,59 @@
+<div class="experience-container">
+  <div class="central">
+    <h2>Experiences</h2>
+    <ng-template #content let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">
+          Modifica presentazione
+        </h4>
+        <button
+          type="button"
+          class="btn-close"
+          aria-label="Close"
+          (click)="modal.dismiss('Cross click')"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="name">Nome</label>
+            <div class="input-group">
+              <input type="text" id="name" class="form-control" name="name" />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="surname">Cognome</label>
+            <div class="input-group">
+              <input
+                type="text"
+                id="surname"
+                class="form-control"
+                name="surname"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="title">Sommario</label>
+            <div class="input-group">
+              <input type="text" id="title" class="form-control" name="title" />
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- SAVE CHANGES -->
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-outline-dark"
+          (click)="modal.close('Save click')"
+        >
+          Save
+        </button>
+      </div>
+    </ng-template>
+
+    <button class="btn btn-lg btn-outline-primary" (click)="buttonHandler()">
+      Cliccami
+    </button>
+  </div>
+</div>

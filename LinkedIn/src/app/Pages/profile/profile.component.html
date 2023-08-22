@@ -11,50 +11,159 @@
       <button class="btn btn-link" (click)="openModal()">Contact info</button>
     </p>
   </div>
+  <div class="container">
+    <div class="central">
+      <!-- Modale aggiorna profilo -->
+      <ng-template #content let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">
+            Modifica presentazione
+          </h4>
+          <button
+            type="button"
+            class="btn-close"
+            aria-label="Close"
+            (click)="modal.dismiss('Cross click')"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit)="updateProfile()">
+            <div class="mb-3">
+              <label for="name">Nome</label>
+              <div class="input-group">
+                <input
+                  type="text"
+                  id="name"
+                  class="form-control"
+                  [(ngModel)]="name"
+                  name="name"
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="surname">Cognome</label>
+              <div class="input-group">
+                <input
+                  type="text"
+                  id="surname"
+                  class="form-control"
+                  [(ngModel)]="surname"
+                  name="surname"
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="title">Sommario</label>
+              <div class="input-group">
+                <input
+                  type="text"
+                  id="title"
+                  class="form-control"
+                  [(ngModel)]="title"
+                  name="title"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- SAVE CHANGES -->
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-outline-dark"
+            (click)="modal.close('Save click'); updateProfile()"
+          >
+            Save
+          </button>
+        </div>
+      </ng-template>
 
-  <ng-template #contactModal let-modal>
-    <div class="modal-header">
-      <h4 class="modal-title">{{ user.name }} {{ user.surname }}</h4>
-      <button
-        type="button"
-        class="close"
-        aria-label="Close"
-        (click)="closeModal()"
-      >
-        <span aria-hidden="true">&times;</span>
+      <button class="btn btn-lg btn-outline-primary" (click)="open(content)">
+        Aggiorna i tuoi dati
       </button>
+      <!-- Fine modale -->
     </div>
-    <div class="modal-body">
-      <h5>Contact Info</h5>
-      <p>Your profile: {{ user.username }}</p>
-      <p>Email: {{ user.email }}</p>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" (click)="closeModal()">
-        Close
-      </button>
-    </div>
-  </ng-template>
-  <div class="element">
-    <div class="info1">Disponibile per</div>
 
-    <div class="info2">Aggiungi sezione del profilo</div>
-    <div class="info3">Altro</div>
-  </div>
-  <div class="blocchi">
-    <div class="blocco1">
-      <div>
-        <p>Disponibile a lavorare</p>
-        <p>Ruoli di Sviluppatore front-end</p>
-        <p class="text-primary">Mostra dettagli</p>
+    <!-- Modale info di contatto -->
+    <ng-template #contactModal let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title">{{ user.name }} {{ user.surname }}</h4>
+        <button
+          type="button"
+          class="close"
+          aria-label="Close"
+          (click)="closeModal()"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h5>Contact Info</h5>
+        <p>Your profile: {{ user.username }}</p>
+        <p>Email: {{ user.email }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">
+          Close
+        </button>
+      </div>
+    </ng-template>
+    <!-- Fine modale -->
+    <div class="element">
+      <div class="info1">Disponibile per</div>
+
+      <div class="info2">Aggiungi sezione del profilo</div>
+      <div class="info3">Altro</div>
+    </div>
+    <div class="blocchi">
+      <div class="blocco1">
+        <div>
+          <p>Disponibile a lavorare</p>
+          <p>Ruoli di Sviluppatore front-end</p>
+          <p class="text-primary">Mostra dettagli</p>
+        </div>
+      </div>
+      <div class="blocco2">
+        <div>
+          <p>Fai Sapere che stai facendo selezione e attrai</p>
+          <p>candidati qualificati.</p>
+          <p class="text-primary">inizia</p>
+        </div>
       </div>
     </div>
-    <div class="blocco2">
-      <div>
-        <p>Fai Sapere che stai facendo selezione e attrai</p>
-        <p>candidati qualificati.</p>
-        <p class="text-primary">inizia</p>
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">...</div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </header>
+
+<app-experience></app-experience>

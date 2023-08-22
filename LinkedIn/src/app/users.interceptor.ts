@@ -4,8 +4,9 @@ import {
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
+  HttpResponse,
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, concatMap, tap } from 'rxjs';
 import { environment } from '../environments/environment';
 
 @Injectable()
@@ -20,6 +21,20 @@ export class UsersInterceptor implements HttpInterceptor {
     const authReq = request.clone({
       headers: request.headers.set('Authorization', `Bearer ${authToken}`),
     });
-    return next.handle(authReq);
+    const modifyReq = authReq.clone({
+      headers: authReq.headers.set('Content-Type', 'application/json'),
+    });
+    return next.handle(authReq).pipe(
+      concatMap((response) => {
+        return next.handle(modifyReq).pipe(
+          tap((event: HttpEvent<any>) => {
+            if (event instanceof HttpResponse && request.method === 'POST') {
+              console.log('Intercepted POST response:', event.body);
+              console.log('response', response);
+            }
+          })
+        );
+      })
+    );
   }
 }

@@ -1,13 +1,19 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { IUser } from './Components/Interfaces/user';
+import { IExperience } from './Components/Interfaces/experience';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
   constructor(private http: HttpClient) {}
+
+  userData!: IUser;
+
+  private user = new BehaviorSubject<Partial<IUser>>({});
+  user$ = this.user.asObservable();
 
   // Get all users
   getUsers(): Observable<IUser[]> {
@@ -33,10 +39,32 @@ export class UsersService {
   }
 
   // Put method
-  updateUser(userId: string, userData: IUser) {
-    return this.http.put(
-      `https://striveschool-api.herokuapp.com/api/profile/${userId}`,
-      userData
-    );
+  updateUser(data: Partial<IUser>) {
+    const apiUrl = 'https://striveschool-api.herokuapp.com/api/profile/';
+    return this.http.put<IUser>(apiUrl, data);
   }
+
+  // Get experience
+  getExperience(userId: string): Observable<IExperience> {
+    const apiUrl = `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences`;
+    return this.http.get<IExperience>(apiUrl);
+  }
+
+  // Create experience
+  createExperience(
+    userId: string,
+    data: Partial<IExperience>
+  ): Observable<IExperience> {
+    const apiUrl = `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences`;
+    return this.http.post<IExperience>(apiUrl, data);
+  }
+
+  // updateUser(data: Partial<IUser>) {
+  //   const apiUrl = 'https://striveschool-api.herokuapp.com/api/profile/';
+  //   return this.http.put<IUser>(apiUrl, data).pipe(
+  //     tap((updatedUser) => {
+  //       this.user.next(updatedUser);
+  //     })
+  //   );
+  // }
 }
