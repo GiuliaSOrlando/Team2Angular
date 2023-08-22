@@ -1,4 +1,6 @@
+<!--Navbar-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <!--Cerca-->
   <div class="container-fluid">
     <form class="d-flex" (ngSubmit)="searchProfile(searchInput)">
       <a class="navbar-brand" href="#">
@@ -18,11 +20,9 @@
       />
       <button type="submit">Cerca</button>
     </form>
+    <!--Icona Home-->
     <div class="navbar-nav">
-      <a
-        class="nav-link d-flex flex-column align-items-center"
-        routerLink="/profile"
-      >
+      <a class="nav-link d-flex flex-column align-items-center" href="#">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="30"
@@ -37,6 +37,7 @@
         </svg>
         Home
       </a>
+      <!--Icona Rete-->
       <a class="nav-link d-flex flex-column align-items-center" href="#">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -52,6 +53,7 @@
         </svg>
         Rete
       </a>
+      <!--Icona Lavoro-->
       <a class="nav-link d-flex flex-column align-items-center" href="#">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -70,6 +72,7 @@
         </svg>
         Lavoro
       </a>
+      <!--Icona Messaggi-->
       <a class="nav-link d-flex flex-column align-items-center" href="#">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -85,6 +88,7 @@
         </svg>
         Messaggi
       </a>
+      <!--Icona Notifiche-->
       <a class="nav-link d-flex flex-column align-items-center" href="#">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -100,6 +104,7 @@
         </svg>
         Notifiche
       </a>
+      <!--Icona Tu-->
       <a class="nav-link d-flex flex-column align-items-center" href="#">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -131,6 +136,7 @@
         </li>
       </a>
     </div>
+    <!--Icona Griglia-->
     <div class="d-flex align-items-center">
       <a class="nav-link d-flex flex-column align-items-center" href="#">
         <svg
@@ -160,6 +166,7 @@
           </ul>
         </li>
       </a>
+      <!--Prova Premium-->
       <div class="d-flex align-items-center">
         <a class="nav-link" href="#">
           <i class="bi" bi-additional-icon></i>
