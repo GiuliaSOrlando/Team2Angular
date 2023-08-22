@@ -28,4 +28,13 @@ export class ExperienceService {
     const apiUrl = `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences/${expId}`;
     return this.http.delete<IExperience>(apiUrl);
   }
+
+  modifyExperience(
+    userId: string,
+    expId: string,
+    experienceData: IExperience
+  ): Observable<IExperience> {
+    const url = `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences/${expId}`;
+    return this.http.put<IExperience>(url, experienceData);
+  }
 }
