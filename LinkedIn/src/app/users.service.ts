@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { IUser } from './Components/Interfaces/user';
 
@@ -10,6 +10,9 @@ export class UsersService {
   constructor(private http: HttpClient) {}
 
   userData!: IUser;
+
+  private user = new BehaviorSubject<Partial<IUser>>({});
+  user$ = this.user.asObservable();
 
   // Get all users
   getUsers(): Observable<IUser[]> {
@@ -39,4 +42,13 @@ export class UsersService {
     const apiUrl = 'https://striveschool-api.herokuapp.com/api/profile/';
     return this.http.put<IUser>(apiUrl, data);
   }
+
+  // updateUser(data: Partial<IUser>) {
+  //   const apiUrl = 'https://striveschool-api.herokuapp.com/api/profile/';
+  //   return this.http.put<IUser>(apiUrl, data).pipe(
+  //     tap((updatedUser) => {
+  //       this.user.next(updatedUser);
+  //     })
+  //   );
+  // }
 }

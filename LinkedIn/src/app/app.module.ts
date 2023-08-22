@@ -8,11 +8,17 @@ import { NavbarComponent } from './Components/navbar/navbar.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { UsersInterceptor } from './users.interceptor';
 import { FormsModule } from '@angular/forms';
-import { TestUpdateComponent } from './pages/test-update/test-update.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  declarations: [AppComponent, ProfileComponent, NavbarComponent, TestUpdateComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  declarations: [AppComponent, ProfileComponent, NavbarComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    NgbModule,
+  ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: UsersInterceptor, multi: true },
   ],

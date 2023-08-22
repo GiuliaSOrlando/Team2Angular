@@ -5,6 +5,76 @@
       <img src="{{ user.image }}" alt="" />
     </div>
     <div class="central">
+      <!-- Modale aggiorna profilo -->
+      <ng-template #content let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">
+            Modifica presentazione
+          </h4>
+          <button
+            type="button"
+            class="btn-close"
+            aria-label="Close"
+            (click)="modal.dismiss('Cross click')"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit)="updateProfile()">
+            <div class="mb-3">
+              <label for="name">Nome</label>
+              <div class="input-group">
+                <input
+                  type="text"
+                  id="name"
+                  class="form-control"
+                  [(ngModel)]="name"
+                  name="name"
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="surname">Cognome</label>
+              <div class="input-group">
+                <input
+                  type="text"
+                  id="surname"
+                  class="form-control"
+                  [(ngModel)]="surname"
+                  name="surname"
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="title">Sommario</label>
+              <div class="input-group">
+                <input
+                  type="text"
+                  id="title"
+                  class="form-control"
+                  [(ngModel)]="title"
+                  name="title"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- SAVE CHANGES -->
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-outline-dark"
+            (click)="modal.close('Save click'); updateProfile()"
+          >
+            Save
+          </button>
+        </div>
+      </ng-template>
+
+      <button class="btn btn-lg btn-outline-primary" (click)="open(content)">
+        Aggiorna i tuoi dati
+      </button>
+      <!-- Fine modale -->
+
       <h4>{{ user.name }} {{ user.surname }}</h4>
       <p class="job">{{ user.title }}</p>
       <p>
@@ -37,6 +107,38 @@
         Fai Sapere che stai facendo selezione e attrai
         <p>candidati qualificati.</p>
         <p class="text-primary">inizia</p>
+      </div>
+    </div>
+  </div>
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">...</div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
       </div>
     </div>
   </div>
