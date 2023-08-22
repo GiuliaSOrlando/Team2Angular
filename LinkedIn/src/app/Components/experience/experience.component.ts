@@ -22,6 +22,8 @@ export class ExperienceComponent {
     area: '',
   };
   experiences: IExperience[] = [];
+  experience!: IExperience;
+  selectedExperienceId!: string;
 
   constructor(
     private modalService: NgbModal,
@@ -44,10 +46,10 @@ export class ExperienceComponent {
     this.experienceSVC.getExperience(userId).subscribe(
       (data: IExperience) => {
         this.experiences = this.experiences.concat(data);
-        console.log('esperienze aggiunte', this.experiences);
+        console.log('Added experience', this.experiences);
       },
       (error) => {
-        console.error('Error fetching experiences:', error);
+        console.error('Error:', error);
       }
     );
   }
@@ -78,18 +80,20 @@ export class ExperienceComponent {
 
   @ViewChild('content') modalContent!: any;
 
-  openModal(experienceId: string) {
+  openModifyModal(experienceId: string) {
     const selectedExperience = this.experiences.find(
       (exp) => exp._id === experienceId
     );
     if (selectedExperience) {
       this.newExperience = { ...selectedExperience };
+      this.selectedExperienceId = experienceId;
       this.modalService.open(this.modalContent, { size: 'lg' });
     }
   }
 
   // Method to modify an experience
   modifyExperience(userId: string, expId: string, formData: IExperience): void {
+    console.log(this.newExperience);
     this.experienceSVC.modifyExperience(userId, expId, formData).subscribe(
       () => {
         console.log(`Experience with ID ${expId} modified successfully.`);
