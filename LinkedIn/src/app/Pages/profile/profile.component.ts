@@ -3,7 +3,6 @@ import { NgForm } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IUser } from 'src/app/Components/Interfaces/user';
 import { UsersService } from 'src/app/users.service';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-profile',
