@@ -73,6 +73,7 @@ export class ExperienceComponent {
       .createExperience('64e30d0c1f175c0014c558b6', this.newExperience)
       .subscribe((response) => {
         console.log('New experience added:', response);
+        this.getMyExperience();
       });
 
     this.modalService.dismissAll();
@@ -109,11 +110,31 @@ export class ExperienceComponent {
     this.experienceSVC.modifyExperience(userId, expId, formData).subscribe(
       () => {
         console.log(`Experience with ID ${expId} modified successfully.`);
+        this.getMyExperience();
         this.modalService.dismissAll();
         console.log(this.newExperience);
       },
       (error) => {
         console.error(`Failed to modify experience with ID ${expId}.`, error);
+      }
+    );
+  }
+
+  deleteExperience(experienceId: string) {
+    const userId = '64e30d0c1f175c0014c558b6';
+    this.experienceSVC.deleteExperience(userId, experienceId).subscribe(
+      () => {
+        console.log(`Experience with ID ${experienceId} deleted successfully.`);
+        this.experiences = this.experiences.filter(
+          (exp) => exp._id !== experienceId
+        );
+        this.getMyExperience();
+      },
+      (error) => {
+        console.error(
+          `Failed to delete experience with ID ${experienceId}.`,
+          error
+        );
       }
     );
   }
