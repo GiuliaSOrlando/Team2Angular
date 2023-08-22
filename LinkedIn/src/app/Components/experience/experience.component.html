@@ -6,6 +6,14 @@
     <div class="central">
       <h2>Experiences</h2>
     </div>
+    <div *ngFor="let experience of experiences">
+      <h3>{{ experience.role }}</h3>
+      <p>{{ experience.company }}</p>
+      <p>{{ experience.description }}</p>
+      <p>{{ experience.area }}</p>
+      <p>{{ experience.startDate | date }}</p>
+      <p>{{ experience.endDate | date }}</p>
+    </div>
   </div>
   <ng-template #content let-modal>
     <div class="modal-header">

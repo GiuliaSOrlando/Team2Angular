@@ -21,6 +21,7 @@ export class ExperienceComponent {
     description: '',
     area: '',
   };
+  experiences: IExperience[] = [];
 
   constructor(
     private modalService: NgbModal,
@@ -31,6 +32,24 @@ export class ExperienceComponent {
     this.route.url.subscribe((urlSegments) => {
       this.isExperiencePage = urlSegments[0]?.path === 'experience';
     });
+  }
+
+  ngOnInit() {
+    this.getMyExperience();
+    console.log(this.experiences);
+  }
+
+  getMyExperience(): void {
+    const userId = '64e30d0c1f175c0014c558b6';
+    this.experienceSVC.getExperience(userId).subscribe(
+      (data: IExperience) => {
+        this.experiences.push(data);
+        console.log(this.experiences);
+      },
+      (error) => {
+        console.error('Error fetching experiences:', error);
+      }
+    );
   }
 
   // MODALE
