@@ -63,21 +63,6 @@ export class ProfileComponent {
     this.modalService.dismissAll();
   }
 
-  // @ViewChild('contactModal') contactModal!: any;
-
-  // openModal() {
-  //   this.modalService
-  //     .open(this.contactModal, { ariaLabelledBy: 'modal-basic-title' })
-  //     .result.then(
-  //       (result) => {},
-  //       (reason) => {}
-  //     );
-  // }
-
-  // closeModal() {
-  //   this.modalService.dismissAll();
-  // }
-
   updateProfile() {
     this.userSVC
       .updateUser({ name: this.name, surname: this.surname })
