@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IUser } from 'src/app/Components/Interfaces/user';
 import { UsersService } from 'src/app/users.service';
@@ -47,6 +48,36 @@ export class ProfileComponent {
         console.error('Error:', error);
       }
     );
+  }
+
+  @ViewChild('contactModal') contactModal!: any;
+
+  openModal() {
+    this.modalService
+      .open(this.contactModal, { ariaLabelledBy: 'modal-basic-title' })
+      .result.then(
+        (result) => {},
+        (reason) => {}
+      );
+  }
+
+  closeModal() {
+    this.modalService.dismissAll();
+  }
+
+  @ViewChild('contactModal') contactModal!: any;
+
+  openModal() {
+    this.modalService
+      .open(this.contactModal, { ariaLabelledBy: 'modal-basic-title' })
+      .result.then(
+        (result) => {},
+        (reason) => {}
+      );
+  }
+
+  closeModal() {
+    this.modalService.dismissAll();
   }
 
   updateProfile() {

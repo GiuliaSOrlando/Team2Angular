@@ -78,33 +78,48 @@
       <h4>{{ user.name }} {{ user.surname }}</h4>
       <p class="job">{{ user.title }}</p>
       <p>
-        Abito a {{ user.area }}
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          fill="currentColor"
-          class="bi bi-dot"
-          viewBox="0 0 16 16"
-        >
-          <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
-        </svg>
-        Informazioni di contatto
+        Abito a {{ user.area }} •
+        <button class="btn btn-link" (click)="openModal()">Contact info</button>
       </p>
     </div>
+
+    <ng-template #contactModal let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title">{{ user.name }} {{ user.surname }}</h4>
+        <button
+          type="button"
+          class="close"
+          aria-label="Close"
+          (click)="closeModal()"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h5>Contact Info</h5>
+        <p>Your profile: {{ user.username }}</p>
+        <p>Email: {{ user.email }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">
+          Close
+        </button>
+      </div>
+    </ng-template>
     <div class="element">
       <div class="info1">Disponibile per</div>
+
       <div class="info2">Aggiungi sezione del profilo</div>
       <div class="info3">Altro</div>
     </div>
     <div class="blocchi">
       <div class="blocco1">
-        Disponibile a lavorare
+        <p>Disponibile a lavorare</p>
         <p>Ruoli di Sviluppatore front-end</p>
         <p class="text-primary">Mostra dettagli</p>
       </div>
       <div class="blocco2">
-        Fai Sapere che stai facendo selezione e attrai
+        <p>Fai Sapere che stai facendo selezione e attrai</p>
         <p>candidati qualificati.</p>
         <p class="text-primary">inizia</p>
       </div>
