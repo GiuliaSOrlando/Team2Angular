@@ -100,12 +100,17 @@ export class ExperienceComponent {
   }
 
   // Method to modify an experience
-  modifyExperience(userId: string, expId: string, formData: IExperience): void {
+  modifyExperience(
+    userId: string,
+    expId: string,
+    formData: Partial<IExperience>
+  ): void {
     console.log(this.newExperience);
     this.experienceSVC.modifyExperience(userId, expId, formData).subscribe(
       () => {
         console.log(`Experience with ID ${expId} modified successfully.`);
         this.modalService.dismissAll();
+        console.log(this.newExperience);
       },
       (error) => {
         console.error(`Failed to modify experience with ID ${expId}.`, error);
