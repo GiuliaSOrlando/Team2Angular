@@ -110,18 +110,33 @@
     </ng-template>
     <!-- Fine modale -->
     <div class="element">
-      <div class="info1">Disponibile per</div>
-
-      <div class="info2">Aggiungi sezione del profilo</div>
-      <div class="info3">Altro</div>
-    </div>
-    <div class="blocchi">
-      <div class="blocco1">
-        <div>
-          <p>Disponibile a lavorare</p>
-          <p>Ruoli di Sviluppatore front-end</p>
-          <p class="text-primary">Mostra dettagli</p>
-        </div>
+    <div class="row">
+      <div class="col">
+        <div ngbDropdown class="d-flex">
+          <button
+            type="button"
+            class="btn btn-outline-primary"
+            id="info1"
+            ngbDropdownToggle
+          >
+            Disponibile per
+          </button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem>
+              <h5>Servizi offerti</h5>
+              <p>
+                Metti in risalto i servizi che offri, <br />così i nuovi clienti
+                potranno trovarti
+              </p>
+            </button>
+            <button ngbDropdownItem>
+              <h5>Selezione del personale</h5>
+              <p>
+                Fai sapere che stai facendo <br />selezione e attrai candidati
+                <br />
+                qualificati
+              </p>
+            </button>
       </div>
       <div class="blocco2">
         <div>
@@ -131,6 +146,10 @@
         </div>
       </div>
     </div>
+    <div class="info2">Aggiungi sezione del profilo</div>
+    <div class="row">
+      <div class="col">
+        <div ngbDropdown class="d-flex">
     <div
       class="modal fade"
       id="exampleModal"
@@ -158,11 +177,96 @@
             >
               Close
             </button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-primary">Save changes</button>  class="btn btn-outline-primary"
+            id="info3"
+            ngbDropdownToggle
+          >
+            Altro
+          </button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-arrow-90deg-right"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M14.854 4.854a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 4H3.5A2.5 2.5 0 0 0 1 6.5v8a.5.5 0 0 0 1 0v-8A1.5 1.5 0 0 1 3.5 5h9.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4z"
+                /></svg
+              >Invio il profilo in un messaggio
+            </button>
+            <button ngbDropdownItem>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-download"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"
+                />
+                <path
+                  d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"
+                /></svg
+              >Salva come PDF
+            </button>
+            <button ngbDropdownItem>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-info-square-fill"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm8.93 4.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"
+                />
+              </svg>
+
+              informazioni su questo profilo
+            </button>
           </div>
         </div>
       </div>
     </div>
+  </div>
+  <!-- CAROSELLO -->
+
+  <div class="blocchi">
+    <div class="blocco1">
+      <div>
+        <p><b>Disponibile a lavorare</b></p>
+        <p>Ruoli di Sviluppatore front-end</p>
+        <p class="text-primary"><b>Mostra dettagli</b></p>
+      </div>
+    </div>
+    <div class="blocco2">
+      <div>
+        <p><b>Fai Sapere che stai facendo selezione e attrai</b></p>
+        <p>candidati qualificati.</p>
+        <p class="text-primary"><b>Inizia</b></p>
+      </div>
+    </div>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="26"
+      height="26"
+      fill="currentColor"
+      class="bi bi-arrow-right-circle-fill"
+      id="freccia"
+      viewBox="0 0 16 16"
+    >
+      <path
+        d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"
+      />
+    </svg>
   </div>
 </header>
 
