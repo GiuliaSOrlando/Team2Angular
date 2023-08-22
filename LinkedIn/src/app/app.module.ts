@@ -10,9 +10,10 @@ import { UsersInterceptor } from './users.interceptor';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ExperienceComponent } from './Components/experience/experience.component';
+import { AsideComponent } from './Components/aside/aside.component';
 
 @NgModule({
-  declarations: [AppComponent, ProfileComponent, NavbarComponent, ExperienceComponent],
+  declarations: [AppComponent, ProfileComponent, NavbarComponent, ExperienceComponent, AsideComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
