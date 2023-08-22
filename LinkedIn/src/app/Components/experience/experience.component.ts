@@ -30,7 +30,7 @@ export class ExperienceComponent {
   // Funzione sezione esperienze
   buttonHandler() {
     if (this.isExperiencePage) {
-      open(this.content);
+      this.open(this.content);
     } else {
       this.router.navigate(['/experience']);
     }
