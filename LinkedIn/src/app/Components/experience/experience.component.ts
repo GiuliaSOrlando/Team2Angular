@@ -1,6 +1,8 @@
+import { ExperienceService } from './../../experience.service';
 import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { IExperience } from '../Interfaces/experience';
 
 @Component({
   selector: 'app-experience',
@@ -11,11 +13,20 @@ export class ExperienceComponent {
   @ViewChild('content') content!: any;
 
   isExperiencePage: boolean = false;
+  newExperience: Partial<IExperience> = {
+    role: '',
+    company: '',
+    startDate: '',
+    endDate: '',
+    description: '',
+    area: '',
+  };
 
   constructor(
     private modalService: NgbModal,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private experienceSVC: ExperienceService
   ) {
     this.route.url.subscribe((urlSegments) => {
       this.isExperiencePage = urlSegments[0]?.path === 'experience';
@@ -34,5 +45,15 @@ export class ExperienceComponent {
     } else {
       this.router.navigate(['/experience']);
     }
+  }
+
+  createExperience() {
+    this.experienceSVC
+      .createExperience('64e30d0c1f175c0014c558b6', this.newExperience)
+      .subscribe((response) => {
+        console.log('New experience added:', response);
+      });
+
+    this.modalService.dismissAll();
   }
 }

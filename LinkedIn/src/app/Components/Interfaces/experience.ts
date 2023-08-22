@@ -6,7 +6,7 @@ export interface IExperience {
   endDate: string;
   description: string;
   area: string;
-  username: string;
+  username?: string;
   createdAt: string;
   updatedAt: string;
   __v: number;

@@ -18,22 +18,17 @@ export class UsersInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     const authToken = environment.apiKey;
-    const authReq = request.clone({
-      headers: request.headers.set('Authorization', `Bearer ${authToken}`),
+    const modifiedReq = request.clone({
+      headers: request.headers
+        .set('Authorization', `Bearer ${authToken}`)
+        .set('Content-Type', 'application/json'),
     });
-    const modifyReq = authReq.clone({
-      headers: authReq.headers.set('Content-Type', 'application/json'),
-    });
-    return next.handle(authReq).pipe(
-      concatMap((response) => {
-        return next.handle(modifyReq).pipe(
-          tap((event: HttpEvent<any>) => {
-            if (event instanceof HttpResponse && request.method === 'POST') {
-              console.log('Intercepted POST response:', event.body);
-              console.log('response', response);
-            }
-          })
-        );
+
+    return next.handle(modifiedReq).pipe(
+      tap((event: HttpEvent<any>) => {
+        if (event instanceof HttpResponse && request.method === 'POST') {
+          console.log('Intercepted POST response:', event.body);
+        }
       })
     );
   }
