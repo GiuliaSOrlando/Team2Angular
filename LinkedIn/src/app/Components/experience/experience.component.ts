@@ -43,8 +43,8 @@ export class ExperienceComponent {
     const userId = '64e30d0c1f175c0014c558b6';
     this.experienceSVC.getExperience(userId).subscribe(
       (data: IExperience) => {
-        this.experiences.push(data);
-        console.log(this.experiences);
+        this.experiences = this.experiences.concat(data);
+        console.log('esperienze aggiunte', this.experiences);
       },
       (error) => {
         console.error('Error fetching experiences:', error);
