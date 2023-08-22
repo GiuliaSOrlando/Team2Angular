@@ -75,4 +75,12 @@ export class ExperienceComponent {
 
     this.modalService.dismissAll();
   }
+
+  deleteExperience() {
+    this.experienceSVC
+      .deleteExperience('64e30d0c1f175c0014c558b6', '64e4bf94dffb8b0014413c65')
+      .subscribe((response) => {
+        console.log('Experience deleted:', response);
+      });
+  }
 }

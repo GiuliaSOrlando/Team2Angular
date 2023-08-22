@@ -13,6 +13,9 @@
       <p>{{ experience.area }}</p>
       <p>{{ experience.startDate | date }}</p>
       <p>{{ experience.endDate | date }}</p>
+      <button class="btn btn-danger" (click)="deleteExperience()">
+        Elimina esperienza
+      </button>
     </div>
   </div>
   <ng-template #content let-modal>
