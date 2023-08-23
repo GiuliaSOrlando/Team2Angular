@@ -45,8 +45,9 @@ export class ExperienceComponent {
     const userId = '64e30d0c1f175c0014c558b6';
     this.experienceSVC.getExperience(userId).subscribe(
       (data: IExperience) => {
+        this.experiences = [];
         this.experiences = this.experiences.concat(data);
-        console.log('Added experience', this.experiences);
+        console.log('Experiences list:', this.experiences);
       },
       (error) => {
         console.error('Error:', error);
@@ -79,14 +80,6 @@ export class ExperienceComponent {
     this.modalService.dismissAll();
   }
 
-  deleteExperience() {
-    this.experienceSVC
-      .deleteExperience('64e30d0c1f175c0014c558b6', '64e4bf94dffb8b0014413c65')
-      .subscribe((response) => {
-        console.log('Experience deleted:', response);
-      });
-  }
-
   @ViewChild('content') modalContent!: any;
 
   openModifyModal(experienceId: string) {
@@ -112,7 +105,6 @@ export class ExperienceComponent {
         console.log(`Experience with ID ${expId} modified successfully.`);
         this.getMyExperience();
         this.modalService.dismissAll();
-        console.log(this.newExperience);
       },
       (error) => {
         console.error(`Failed to modify experience with ID ${expId}.`, error);
@@ -122,9 +114,10 @@ export class ExperienceComponent {
 
   deleteExperience(experienceId: string) {
     const userId = '64e30d0c1f175c0014c558b6';
-    this.experienceSVC.deleteExperience(userId, experienceId).subscribe(
+    console.log('experienceiD:', experienceId);
+    this.experienceSVC.deleteExperienceSvc(userId, experienceId).subscribe(
       () => {
-        console.log(`Experience with ID ${experienceId} deleted successfully.`);
+        console.log('this.experiences:', this.experiences);
         this.experiences = this.experiences.filter(
           (exp) => exp._id !== experienceId
         );
