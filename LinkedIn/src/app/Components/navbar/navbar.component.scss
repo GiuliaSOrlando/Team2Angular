@@ -5,8 +5,35 @@
 .searchbar {
   background-color: #edf3f7;
   border: none;
+  display: none;
+  height: 3em;
+}
+
+.navIcon {
+  padding: 0;
+  height: fit-content;
+}
+
+.navContainer {
+  width: 100%;
+  padding: 0px 0px 0px 0px;
+  display: flex;
+  justify-content: space-between;
 }
 
 u {
   color: #915907;
 }
+
+// MEDIA QUERIES
+
+@media screen and (min-width: 1025px) {
+  .searchbar {
+    display: initial;
+  }
+
+  .navContainer {
+    padding: 0px 5% 0px 5%;
+  }
+}
+
