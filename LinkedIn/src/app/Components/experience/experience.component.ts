@@ -3,6 +3,7 @@ import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IExperience } from '../Interfaces/experience';
+import { UsersService } from 'src/app/users.service';
 
 @Component({
   selector: 'app-experience',
@@ -29,7 +30,8 @@ export class ExperienceComponent {
     private modalService: NgbModal,
     private route: ActivatedRoute,
     private router: Router,
-    private experienceSVC: ExperienceService
+    private experienceSVC: ExperienceService,
+    private usersSVC: UsersService
   ) {
     this.route.url.subscribe((urlSegments) => {
       this.isExperiencePage = urlSegments[0]?.path === 'experience';
@@ -37,12 +39,18 @@ export class ExperienceComponent {
   }
 
   ngOnInit() {
-    this.getMyExperience();
-    console.log(this.experiences);
+    this.usersSVC.getSingleUser().subscribe(
+      (user) => {
+        const userId = user._id;
+        this.getMyExperience(userId);
+      },
+      (error) => {
+        console.error('Error fetching user data:', error);
+      }
+    );
   }
 
-  getMyExperience(): void {
-    const userId = '64e30d0c1f175c0014c558b6';
+  getMyExperience(userId: string): void {
     this.experienceSVC.getExperience(userId).subscribe(
       (data: IExperience) => {
         this.experiences = [];
@@ -70,12 +78,25 @@ export class ExperienceComponent {
   }
 
   createExperience() {
-    this.experienceSVC
-      .createExperience('64e30d0c1f175c0014c558b6', this.newExperience)
-      .subscribe((response) => {
-        console.log('New experience added:', response);
-        this.getMyExperience();
-      });
+    this.usersSVC.getSingleUser().subscribe(
+      (user) => {
+        const userId = user._id;
+        this.experienceSVC
+          .createExperience(userId, this.newExperience)
+          .subscribe(
+            (response) => {
+              console.log('New experience added:', response);
+              this.getMyExperience(userId);
+            },
+            (error) => {
+              console.error('Error creating experience:', error);
+            }
+          );
+      },
+      (error) => {
+        console.error('Error fetching user data:', error);
+      }
+    );
 
     this.modalService.dismissAll();
   }
@@ -94,40 +115,53 @@ export class ExperienceComponent {
   }
 
   // Method to modify an experience
-  modifyExperience(
-    userId: string,
-    expId: string,
-    formData: Partial<IExperience>
-  ): void {
-    console.log(this.newExperience);
-    this.experienceSVC.modifyExperience(userId, expId, formData).subscribe(
-      () => {
-        console.log(`Experience with ID ${expId} modified successfully.`);
-        this.getMyExperience();
-        this.modalService.dismissAll();
+  modifyMyExperience(expId: string, formData: Partial<IExperience>): void {
+    this.usersSVC.getSingleUser().subscribe(
+      (user) => {
+        const userId = user._id;
+        this.experienceSVC.modifyExperience(userId, expId, formData).subscribe(
+          () => {
+            console.log(`Experience with ID ${expId} modified successfully.`);
+            this.getMyExperience(userId);
+            this.modalService.dismissAll();
+          },
+          (error) => {
+            console.error(
+              `Failed to modify experience with ID ${expId}.`,
+              error
+            );
+          }
+        );
       },
       (error) => {
-        console.error(`Failed to modify experience with ID ${expId}.`, error);
+        console.error('Error fetching user data:', error);
       }
     );
   }
 
   deleteExperience(experienceId: string) {
-    const userId = '64e30d0c1f175c0014c558b6';
-    console.log('experienceiD:', experienceId);
-    this.experienceSVC.deleteExperienceSvc(userId, experienceId).subscribe(
-      () => {
-        console.log('this.experiences:', this.experiences);
-        this.experiences = this.experiences.filter(
-          (exp) => exp._id !== experienceId
+    this.usersSVC.getSingleUser().subscribe(
+      (user) => {
+        const userId = user._id;
+        console.log('experienceId:', experienceId);
+        this.experienceSVC.deleteExperienceSvc(userId, experienceId).subscribe(
+          () => {
+            console.log('this.experiences:', this.experiences);
+            this.experiences = this.experiences.filter(
+              (exp) => exp._id !== experienceId
+            );
+            this.getMyExperience(userId);
+          },
+          (error) => {
+            console.error(
+              `Failed to delete experience with ID ${experienceId}.`,
+              error
+            );
+          }
         );
-        this.getMyExperience();
       },
       (error) => {
-        console.error(
-          `Failed to delete experience with ID ${experienceId}.`,
-          error
-        );
+        console.error('Error fetching user data:', error);
       }
     );
   }

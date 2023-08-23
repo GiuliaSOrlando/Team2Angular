@@ -18,11 +18,16 @@ export class UsersInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     const authToken = environment.apiKey;
-    const modifiedReq = request.clone({
-      headers: request.headers
-        .set('Authorization', `Bearer ${authToken}`)
-        .set('Content-Type', 'application/json'),
+
+    let modifiedReq = request.clone({
+      headers: request.headers.set('Authorization', `Bearer ${authToken}`),
     });
+
+    if (request.method === 'POST') {
+      modifiedReq = modifiedReq.clone({
+        headers: modifiedReq.headers.set('Content-Type', 'application/json'),
+      });
+    }
 
     return next.handle(modifiedReq).pipe(
       tap((event: HttpEvent<any>) => {
