@@ -261,97 +261,73 @@
       </svg>
     </div>
   </header>
+  <!-- ANALISI -->
   <div class="analytics-container">
     <div class="analytics-row">
       <div class="col analytics-header">
         <h5>Analisi</h5>
-        <div>
+        <div class="d-flex align-items-center">
           <img
-            class="analytics-img"
+            class="analytics-eye-img"
             src="../../../assets/analytics-eye.png"
             alt=""
           />
-          <span>Solo per te</span>
+          <p class="fs-6 mb-0">Solo per te</p>
         </div>
       </div>
-      <div class="analytics-col">
-        <div>
+      <!-- visualizzazioni profilo -->
+      <div class="analytics-col d-flex">
+        <div class="d-flex">
           <img
             class="analytics-img"
             src="../../../assets/analytics-people.png"
             alt=""
           />
-          <span>{{ randomNumFirst }} visualizzazioni del profilo</span>
-          <p>Scopri chi ha visitato il tuo profilo</p>
+          <div class="d-flex flex-column ps-2">
+            <p class="fw-semibold mb-1">
+              {{ randomNumFirst }} visualizzazioni del profilo
+            </p>
+            <p class="sizeP mb-1">Scopri chi ha visitato il tuo profilo</p>
+          </div>
         </div>
-        <div>
+        <!-- interazioni post -->
+        <div class="d-flex ps-3 pe-3">
           <img
             class="analytics-img"
             src="../../../assets/analytics-graph.png"
             alt=""
           />
-          <span>{{ randomNumSecond }} impressioni frl pody</span>
-          <p>Scopri chi sta interagendo con i tuoi post</p>
+          <div class="d-flex flex-column ps-2">
+            <p class="fw-semibold mb-1">
+              {{ randomNumSecond }} impressioni frl pody
+            </p>
+            <p class="sizeP mb-1">Scopri chi sta interagendo con i tuoi post</p>
+          </div>
         </div>
-        <div>
+        <!-- comparse motori ricerca -->
+        <div class="d-flex">
           <img
             class="analytics-img"
             src="../../../assets/analytics-magnifier.png"
             alt=""
           />
-          <span>{{ randomNumThird }} comparse nei motori di ricerca</span>
-          <p>Vedi quante volte compari nei risultati di ricerca</p>
+          <div class="d-flex flex-column ps-2">
+            <p class="fw-semibold mb-1">
+              {{ randomNumThird }} comparse nei motori di ricerca
+            </p>
+            <p class="sizeP mb-1">
+              Vedi quante volte compari nei risultati di ricerca
+            </p>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="resources-container">
-    <div class="resources-row">
-      <div class="col resources-header">
-        <h5>Risorse</h5>
-        <div>
-          <img
-            class="analytics-img"
-            src="../../../assets/analytics-eye.png"
-            alt=""
-          />
-          <span>Solo per te</span>
-        </div>
-      </div>
-      <div class="resources-col">
-        <div>
-          <img
-            class="analytics-img"
-            src="../../../assets/analytics-people.png"
-            alt=""
-          />
-          <span>Modalità creazione di contenuti</span>
-          <p>
-            Fatti scoprire, metti in risalto i contenuti sul tuo profilo e
-            accedi agli strumenti di creazione
-          </p>
-        </div>
-        <div>
-          <img
-            class="analytics-img"
-            src="../../../assets/analytics-graph.png"
-            alt=""
-          />
-          <span>La mia rete</span>
-          <p>Salva e gestisci i tuoi collegamenti e interessi.</p>
-        </div>
-        <div>
-          <img
-            class="analytics-img"
-            src="../../../assets/analytics-magnifier.png"
-            alt=""
-          />
-          <span>{{ randomNumThird }} comparse nei motori di ricerca</span>
-          <p>Vedi quante volte compari nei risultati di ricerca</p>
-        </div>
-      </div>
-    </div>
-  </div>
+
+  <!-- RISORSE -->
+  <app-resources></app-resources>
+
+  <!-- INFORMAZIONI -->
   <div class="resources-container">
     <div class="resources-row">
       <div class="col resources-header">

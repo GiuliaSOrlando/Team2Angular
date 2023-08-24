@@ -3,6 +3,6 @@ export interface IPost {
   text: string;
   username: string;
   createdAt: string;
-  updateAtAt: string;
+  updatedAt: string;
   __v: number;
 }

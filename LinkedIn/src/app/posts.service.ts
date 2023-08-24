@@ -11,9 +11,9 @@ import { IPost } from './Components/Interfaces/post';
 export class PostsService {
   constructor(private http: HttpClient) {}
   // Get post
-  getPost(userId: string): Observable<IPost> {
+  getPost(userId: string): Observable<IPost[]> {
     const apiUrl = `https://striveschool-api.herokuapp.com/api/posts/`;
-    return this.http.get<IPost>(apiUrl);
+    return this.http.get<IPost[]>(apiUrl);
   }
   // Delete post
   deletePostSvc(postId: string, expId: string): Observable<void> {
