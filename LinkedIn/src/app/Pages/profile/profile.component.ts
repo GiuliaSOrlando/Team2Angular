@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ActivatedRoute } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IUser } from 'src/app/Components/Interfaces/user';
 import { UsersService } from 'src/app/users.service';
 
@@ -10,7 +10,11 @@ import { UsersService } from 'src/app/users.service';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent {
-  constructor(private userSVC: UsersService, private modalService: NgbModal) {
+  constructor(
+    private userSVC: UsersService,
+    private modalService: NgbModal,
+    private route: ActivatedRoute
+  ) {
     this.randomNumFirst = Math.floor(Math.random() * 100) + 1;
     this.randomNumSecond = Math.floor(Math.random() * 100) + 1;
     this.randomNumThird = Math.floor(Math.random() * 100) + 1;
@@ -33,15 +37,8 @@ export class ProfileComponent {
     this.getMyProfile();
   }
 
-  // ngOnInit() {
-  //   this.getMyProfile();
-  //   this.userSVC.user$.subscribe(updatedUser => {
-  //         this.user = updatedUser;
-  //        });
-  // }
-
   getMyProfile() {
-    this.userSVC.getSingleUser().subscribe(
+    this.userSVC.getOwnInfo().subscribe(
       (user: IUser) => {
         this.user = user;
         this.name = this.user.name;
@@ -58,16 +55,25 @@ export class ProfileComponent {
   @ViewChild('contactModal') contactModal!: any;
 
   openModal() {
-    this.modalService
-      .open(this.contactModal, { ariaLabelledBy: 'modal-basic-title' })
-      .result.then(
-        (result) => {},
-        (reason) => {}
-      );
+    this.modalService.open(this.contactModal, {
+      ariaLabelledBy: 'modal-basic-title',
+    });
   }
 
   closeModal() {
     this.modalService.dismissAll();
+  }
+
+  // Correggi la funzione per prendere le info del profilo dall'aside
+  getUserInfo() {
+    this.userSVC.getSpecificUser(this.userId).subscribe(
+      (user: IUser) => {
+        this.user = user;
+      },
+      (error) => {
+        console.error('Error fetching user:', error);
+      }
+    );
   }
 
   updateProfile() {

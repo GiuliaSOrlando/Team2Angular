@@ -1,18 +1,20 @@
 <aside>
   <div class="container">
-    <div class="grid text-center" style="--bs-gap: 0.25rem 1rem">
-      <div class="g-col-12" id="UNO">
-        <h4>Lingua del profilo</h4>
-        <p>Italiano</p>
-        <hr />
-        <h4>Public profile & URL</h4>
-        <p>
-          www.linkedin.com/{{ this.user.username }}-{{
-            this.user._id.slice(0, 6)
-          }}
-        </p>
+    <div class="grid">
+      <div id="first-box">
+        <div class="mx-3">
+          <h5 class="mt-3">Lingua del profilo</h5>
+          <p class="fw-light">Italiano</p>
+          <hr />
+          <h5>Public profile & URL</h5>
+          <p class="fw-light">
+            www.linkedin.com/{{ this.user.username }}-{{
+              this.user._id.slice(0, 6)
+            }}
+          </p>
+        </div>
       </div>
-      <div class="g-col-12" id="DUE">
+      <div id="second-box">
         <div class="girl">
           <img
             src="https://media.licdn.com/media/AAYQAgTPAAgAAQAAAAAAADVuOvKzTF-3RD6j-qFPqhubBQ.png"
@@ -21,23 +23,26 @@
         </div>
       </div>
       <div id="amici">
-        <div class="g-col-12">
-          <h5>Persone che potresti conoscere</h5>
-
-          <img
-            id="amici1"
-            src="https://media.licdn.com/dms/image/C4D03AQGrK1m7ly9n2Q/profile-displayphoto-shrink_100_100/0/1652094733469?e=1698278400&v=beta&t=ik5pUmEgHHJewS2yYlOZtaokE6Mc2RiNvu5MS3zouxU"
-            alt=""
-          />
+        <div class="mx-3">
+          <div class="col-12">
+            <h5>Persone che potresti conoscere</h5>
+          </div>
+          <ng-container *ngFor="let profile of suggestedProfiles">
+            <a [routerLink]="['/profile/', profile._id]">
+              <div class="col-12">
+                <img
+                  [src]="profile.image"
+                  alt="Suggested Profile"
+                  class="rounded-circle"
+                  width="50px"
+                />
+              </div>
+              <p>{{ profile.name }} {{ profile.surname }}</p>
+            </a>
+            <button class="btn btn-outline-dark rounded-pill">Collegati</button>
+            <hr />
+          </ng-container>
         </div>
-        <p>Silvia</p>
-        <p>Psicologa</p>
-        <button>Collegati</button>
-        <hr />
-        <img
-          src="https://media.licdn.com/dms/image/C4D03AQGrK1m7ly9n2Q/profile-displayphoto-shrink_100_100/0/1652094733469?e=1698278400&v=beta&t=ik5pUmEgHHJewS2yYlOZtaokE6Mc2RiNvu5MS3zouxU"
-          alt=""
-        />
       </div>
 
       <div class="g-col-12" id="TRE">

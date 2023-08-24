@@ -38,7 +38,7 @@ export class PostComponent {
   }
 
   ngOnInit() {
-    this.usersSVC.getSingleUser().subscribe(
+    this.usersSVC.getOwnInfo().subscribe(
       (user) => {
         const userId = user._id;
         this.getMyPost(userId);
@@ -77,7 +77,7 @@ export class PostComponent {
   // }
 
   createPost() {
-    this.usersSVC.getSingleUser().subscribe(
+    this.usersSVC.getOwnInfo().subscribe(
       (user) => {
         const userId = user._id;
         this.postSVC.createPost(userId, this.newPost).subscribe(
@@ -113,7 +113,7 @@ export class PostComponent {
 
   // Method to modify an experience
   modifyMyPost(postId: string, formData: Partial<IPost>): void {
-    this.usersSVC.getSingleUser().subscribe(
+    this.usersSVC.getOwnInfo().subscribe(
       (user) => {
         const userId = user._id;
         this.postSVC.modifyPost(userId, postId, formData).subscribe(
@@ -135,7 +135,7 @@ export class PostComponent {
 
   deletePost(postId: string) {
     console.log('Delete button clicked for experience ID:', postId);
-    this.usersSVC.getSingleUser().subscribe(
+    this.usersSVC.getOwnInfo().subscribe(
       (user) => {
         const userId = user._id;
         console.log('postId:', postId);

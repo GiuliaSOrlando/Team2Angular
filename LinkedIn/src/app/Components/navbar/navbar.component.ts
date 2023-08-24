@@ -29,7 +29,7 @@ export class NavbarComponent {
   }
 
   getMyProfile() {
-    this.userSVC.getSingleUser().subscribe(
+    this.userSVC.getOwnInfo().subscribe(
       (user: IUser) => {
         this.user = user;
         this.name = this.user.name;

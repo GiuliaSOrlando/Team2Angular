@@ -39,7 +39,7 @@ export class ExperienceComponent {
   }
 
   ngOnInit() {
-    this.usersSVC.getSingleUser().subscribe(
+    this.usersSVC.getOwnInfo().subscribe(
       (user) => {
         const userId = user._id;
         this.getMyExperience(userId);
@@ -78,7 +78,7 @@ export class ExperienceComponent {
   }
 
   createExperience() {
-    this.usersSVC.getSingleUser().subscribe(
+    this.usersSVC.getOwnInfo().subscribe(
       (user) => {
         const userId = user._id;
         this.experienceSVC
@@ -123,7 +123,7 @@ export class ExperienceComponent {
 
   // Method to modify an experience
   modifyMyExperience(expId: string, formData: Partial<IExperience>): void {
-    this.usersSVC.getSingleUser().subscribe(
+    this.usersSVC.getOwnInfo().subscribe(
       (user) => {
         const userId = user._id;
         this.experienceSVC.modifyExperience(userId, expId, formData).subscribe(
@@ -148,7 +148,7 @@ export class ExperienceComponent {
 
   deleteExperience(experienceId: string) {
     console.log('Delete button clicked for experience ID:', experienceId);
-    this.usersSVC.getSingleUser().subscribe(
+    this.usersSVC.getOwnInfo().subscribe(
       (user) => {
         const userId = user._id;
         console.log('experienceId:', experienceId);

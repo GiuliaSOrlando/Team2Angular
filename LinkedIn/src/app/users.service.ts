@@ -22,7 +22,7 @@ export class UsersService {
   }
 
   // Get my profile
-  getSingleUser(): Observable<IUser> {
+  getOwnInfo(): Observable<IUser> {
     const apiUrl = 'https://striveschool-api.herokuapp.com/api/profile/me';
     return this.http.get<IUser>(apiUrl);
   }
