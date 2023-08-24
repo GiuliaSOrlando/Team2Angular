@@ -6,8 +6,11 @@
         <p>Italiano</p>
         <hr />
         <h4>Public profile & URL</h4>
-        <p>www.linkedin.com</p>
-        <p>7d5934204</p>
+        <p>
+          www.linkedin.com/{{ this.user.username }}-{{
+            this.user._id.slice(0, 6)
+          }}
+        </p>
       </div>
       <div class="g-col-12" id="DUE">
         <div class="girl">
