@@ -11,7 +11,9 @@ import { UsersService } from 'src/app/users.service';
 })
 export class ProfileComponent {
   constructor(private userSVC: UsersService, private modalService: NgbModal) {
-    this.randomNum = Math.floor(Math.random() * 100) + 1;
+    this.randomNumFirst = Math.floor(Math.random() * 100) + 1;
+    this.randomNumSecond = Math.floor(Math.random() * 100) + 1;
+    this.randomNumThird = Math.floor(Math.random() * 100) + 1;
   }
   userId: string = '';
   user!: IUser;
@@ -23,7 +25,9 @@ export class ProfileComponent {
   area: string = '';
   fullName: string = '';
   users: IUser[] = [];
-  randomNum!: number;
+  randomNumFirst!: number;
+  randomNumSecond!: number;
+  randomNumThird!: number;
 
   ngOnInit() {
     this.getMyProfile();

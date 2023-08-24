@@ -18,7 +18,9 @@
               ngbDropdownToggle
             />
             <div ngbDropdownMenu aria-labelledby="plus">
-              <button ngbDropdownItem>Aggiungi posizione lavorativa</button>
+              <button ngbDropdownItem (click)="buttonHandler()">
+                Aggiungi posizione lavorativa
+              </button>
               <button ngbDropdownItem>Aggiungi pausa lavorativa</button>
             </div>
             <img
@@ -60,6 +62,51 @@
         />
       </div>
     </div>
+    <!--Modale dell'icona plus-->
+    <ng-template #creationmodal let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">
+          Aggiungi posizione lavorativa
+        </h4>
+        <button
+          type="button"
+          class="btn-close"
+          aria-label="Close"
+          (click)="modal.dismiss('Cross click')"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="createExperience()">
+          <div class="mb-3">
+            <label for="role">Lavoro</label>
+            <div class="input-group">
+              <input
+                type="text"
+                id="role"
+                class="form-control"
+                [(ngModel)]="newExperience.role"
+                name="role"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="company">Azienda</label>
+            <div class="input-group">
+              <input
+                type="text"
+                id="company"
+                class="form-control"
+                [(ngModel)]="newExperience.company"
+                name="company"
+              />
+            </div>
+          </div>
+          <!-- More fields here: description, area, startDate, endDate -->
+        </form>
+      </div>
+    </ng-template>
+
+    <!--Modale dell'icona pencil-->
     <ng-template #content let-modal>
       <div class="modal-header">
         <h4 class="modal-title" id="modal-basic-title">

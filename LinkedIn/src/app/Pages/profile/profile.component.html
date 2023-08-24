@@ -261,47 +261,115 @@
       </svg>
     </div>
   </header>
-  <app-experience></app-experience>
   <div class="analytics-container">
-    <div class="analytics-header">
-      <h5>Analisi</h5>
-    </div>
-    <div>
-      <img
-        class="analytics-img"
-        src="../../../assets/analytics-eye.png"
-        alt=""
-      />
-      <span>Solo per te</span>
-    </div>
-    <div>
-      <img
-        class="analytics-img"
-        src="../../../assets/analytics-people.png"
-        alt=""
-      />
-      <span>{{ randomNum }} visualizzazioni del profilo</span>
-      <p>Scopri chi ha visitato il tuo profilo</p>
-    </div>
-    <div>
-      <img
-        class="analytics-img"
-        src="../../../assets/analytics-graph.png"
-        alt=""
-      />
-      <span>{{ randomNum }} impressioni frl pody</span>
-      <p>Scopri chi sta interagendo con i tuoi post</p>
-    </div>
-    <div>
-      <img
-        class="analytics-img"
-        src="../../../assets/analytics-magnifier.png"
-        alt=""
-      />
-      <span>{{ randomNum }} comparse nei motori di ricerca</span>
-      <p>Vedi quante volte compari nei risultati di ricerca</p>
+    <div class="analytics-row">
+      <div class="col analytics-header">
+        <h5>Analisi</h5>
+        <div>
+          <img
+            class="analytics-img"
+            src="../../../assets/analytics-eye.png"
+            alt=""
+          />
+          <span>Solo per te</span>
+        </div>
+      </div>
+      <div class="analytics-col">
+        <div>
+          <img
+            class="analytics-img"
+            src="../../../assets/analytics-people.png"
+            alt=""
+          />
+          <span>{{ randomNumFirst }} visualizzazioni del profilo</span>
+          <p>Scopri chi ha visitato il tuo profilo</p>
+        </div>
+        <div>
+          <img
+            class="analytics-img"
+            src="../../../assets/analytics-graph.png"
+            alt=""
+          />
+          <span>{{ randomNumSecond }} impressioni frl pody</span>
+          <p>Scopri chi sta interagendo con i tuoi post</p>
+        </div>
+        <div>
+          <img
+            class="analytics-img"
+            src="../../../assets/analytics-magnifier.png"
+            alt=""
+          />
+          <span>{{ randomNumThird }} comparse nei motori di ricerca</span>
+          <p>Vedi quante volte compari nei risultati di ricerca</p>
+        </div>
+      </div>
     </div>
   </div>
+  <div class="resources-container">
+    <div class="resources-row">
+      <div class="col resources-header">
+        <h5>Risorse</h5>
+        <div>
+          <img
+            class="analytics-img"
+            src="../../../assets/analytics-eye.png"
+            alt=""
+          />
+          <span>Solo per te</span>
+        </div>
+      </div>
+      <div class="resources-col">
+        <div>
+          <img
+            class="analytics-img"
+            src="../../../assets/analytics-people.png"
+            alt=""
+          />
+          <span>Modalità creazione di contenuti</span>
+          <p>
+            Fatti scoprire, metti in risalto i contenuti sul tuo profilo e
+            accedi agli strumenti di creazione
+          </p>
+        </div>
+        <div>
+          <img
+            class="analytics-img"
+            src="../../../assets/analytics-graph.png"
+            alt=""
+          />
+          <span>La mia rete</span>
+          <p>Salva e gestisci i tuoi collegamenti e interessi.</p>
+        </div>
+        <div>
+          <img
+            class="analytics-img"
+            src="../../../assets/analytics-magnifier.png"
+            alt=""
+          />
+          <span>{{ randomNumThird }} comparse nei motori di ricerca</span>
+          <p>Vedi quante volte compari nei risultati di ricerca</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="resources-container">
+    <div class="resources-row">
+      <div class="col resources-header">
+        <h5>Informazioni</h5>
+        <p id="info-text">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae,
+          eos! Quaerat dicta ipsa debitis quo possimus quam, minima ducimus,
+          quos officia accusamus tenetur quisquam ullam esse error corrupti
+          totam. Nulla! Lorem ipsum dolor sit amet consectetur, adipisicing
+          elit. Natus est maiores, nemo illum placeat ducimus tempore suscipit
+          eveniet expedita nam voluptatem! Perspiciatis natus fugit, voluptates
+          iusto voluptas architecto dicta quos.
+        </p>
+      </div>
+    </div>
+  </div>
+  <app-post></app-post>
+  <app-experience></app-experience>
 </main>
 
 <app-aside></app-aside>
