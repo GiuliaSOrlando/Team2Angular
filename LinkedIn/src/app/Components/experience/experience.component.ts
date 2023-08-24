@@ -140,6 +140,7 @@ export class ExperienceComponent {
   }
 
   deleteExperience(experienceId: string) {
+    console.log('Delete button clicked for experience ID:', experienceId);
     this.usersSVC.getSingleUser().subscribe(
       (user) => {
         const userId = user._id;

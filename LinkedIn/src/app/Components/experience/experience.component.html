@@ -4,14 +4,23 @@
       <p>&#8592;</p>
     </a>
     <div class="central">
-      <h5>Experiences</h5>
-      <span id="plus-icon" (click)="buttonHandler()"> + </span>
-      <img
-        id="pencil"
-        src="../../assets/pencil.png"
-        alt=""
-        (click)="open(content)"
-      />
+      <h5>
+        Experiences
+        <span
+          ><img
+            id="plus"
+            class="pencil-plus"
+            src="../../assets/plus.png"
+            alt="" />
+          <img
+            id="pencil"
+            *ngIf="!isExperiencePage"
+            class="pencil-plus"
+            src="../../assets/pencil.png"
+            alt=""
+            (click)="buttonHandler()"
+        /></span>
+      </h5>
     </div>
   </div>
   <div *ngFor="let experience of experiences" class="experience-box">
@@ -32,14 +41,14 @@
       </p>
       <p class="experience-date-area-info">{{ experience.area }}</p>
       <p id="experience-description">{{ experience.description }}</p>
+      <img
+        *ngIf="isExperiencePage"
+        class="pencil-plus"
+        src="../../assets/pencil.png"
+        alt=""
+        (click)="openModifyModal(experience._id)"
+      />
     </div>
-    <button (click)="deleteExperience(experience._id)" class="btn btn-danger">
-      Delete
-    </button>
-
-    <button class="btn btn-primary" (click)="openModifyModal(experience._id)">
-      Modify
-    </button>
   </div>
   <ng-template #content let-modal>
     <div class="modal-header">
@@ -121,10 +130,17 @@
             />
           </div>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Crea</button>
       </form>
     </div>
     <div class="modal-footer">
+      <button
+        id="delete-button"
+        *ngIf="isExperiencePage"
+        (click)="deleteExperience(selectedExperienceId)"
+      >
+        Elimina esperienza
+      </button>
       <button
         type="button"
         class="btn btn-outline-dark"
