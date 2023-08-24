@@ -201,7 +201,6 @@ h5 {
   border-radius: 10px;
   box-shadow: 2px 1px 3px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  padding-bottom: 20px;
   margin-top: 10px;
   display: flex;
 }
@@ -214,6 +213,10 @@ h5 {
 
 .analytics-col {
   flex-direction: row;
+}
+
+.risources-col {
+  flex-direction: column;
 }
 
 .analytics-header {
@@ -260,4 +263,8 @@ h5 {
 #info-text {
   line-height: 1.3em;
   font-size: 0.9em;
+}
+
+.show-all-resources {
+  background-color: #a8a8a8;
 }

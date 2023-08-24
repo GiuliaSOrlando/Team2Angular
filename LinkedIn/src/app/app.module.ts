@@ -12,6 +12,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ExperienceComponent } from './Components/experience/experience.component';
 import { AsideComponent } from './Components/aside/aside.component';
 import { PostComponent } from './Components/post/post.component';
+import { ResourcesComponent } from './Components/resources/resources.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { PostComponent } from './Components/post/post.component';
     ExperienceComponent,
     AsideComponent,
     PostComponent,
+    ResourcesComponent,
   ],
   imports: [
     BrowserModule,
