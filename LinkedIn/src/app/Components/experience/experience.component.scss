@@ -44,3 +44,43 @@
 .experience-box p {
   margin: 8px 0;
 }
+
+#company-img-container {
+  display: inline-block;
+}
+
+#company-img {
+  width: 60px;
+}
+
+#experience-role {
+  font-weight: 600;
+}
+
+#experience-info-container p {
+  line-height: 1.2em;
+}
+
+.experience-date-area-info {
+  font-weight: 200;
+  font-size: 0.9em;
+}
+
+#experience-description {
+  margin-top: 20px;
+  font-weight: 400;
+  font-size: 0.9em;
+}
+
+#plus-icon {
+  font-size: 3em;
+  font-weight: 100;
+
+  line-height: 0;
+  cursor: pointer;
+}
+
+#pencil {
+  width: 30px;
+  cursor: pointer;
+}

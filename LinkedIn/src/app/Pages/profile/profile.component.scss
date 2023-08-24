@@ -41,10 +41,31 @@ header {
   object-fit: contain;
 }
 
-img {
+.photo img {
   object-fit: contain;
   width: 100%;
 }
+
+#pencil-container {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+#pencil {
+  width: 30px;
+  margin: 15px 15px -45px;
+  cursor: pointer;
+}
+
+#pencil:hover {
+  background-color: #d9d7d7;
+  border-radius: 50%;
+}
+
+button {
+  border-radius: 25px;
+}
+
 .bi-camera {
   margin-top: 40px;
 }
@@ -52,13 +73,23 @@ img {
 .central {
   background-color: white;
   width: 600px;
-  height: 150px;
+  height: 80px;
   margin-top: 40px;
   margin-left: 20px;
 }
 
 p {
-  margin: 5px;
+  line-height: 0.2em;
+  margin: 2px;
+}
+
+.area {
+  font-weight: 100;
+  font-size: 0.9em;
+}
+
+.info-col {
+  margin-left: -15px;
 }
 
 #info1 {
