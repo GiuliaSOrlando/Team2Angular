@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef } from '@angular/core';
 import { IUser } from '../Interfaces/user';
 import { UsersService } from 'src/app/users.service';
+import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-navbar',
@@ -8,18 +9,38 @@ import { UsersService } from 'src/app/users.service';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
-  constructor(private userSVC: UsersService) {}
+  constructor(
+    private userSVC: UsersService,
+    private offcanvasService: NgbOffcanvas
+  ) {}
   userId: string = '';
   user!: IUser;
   email: string = '';
   name: string = '';
   surname: string = '';
   fullName: string = '';
+  title: string = '';
   users: IUser[] = [];
   searchInput: string = '';
 
   ngOnInit() {
+    this.getMyProfile();
     this.getAllUsers();
+  }
+
+  getMyProfile() {
+    this.userSVC.getSingleUser().subscribe(
+      (user: IUser) => {
+        this.user = user;
+        this.name = this.user.name;
+        this.surname = this.user.surname;
+        this.title = this.user.title;
+        console.log(user);
+      },
+      (error) => {
+        console.error('Error:', error);
+      }
+    );
   }
 
   getAllUsers() {
@@ -80,5 +101,10 @@ export class NavbarComponent {
     } else {
       console.log('User not found');
     }
+  }
+
+  // Offcanvas
+  openEnd(content: TemplateRef<any>) {
+    this.offcanvasService.open(content, { position: 'end' });
   }
 }

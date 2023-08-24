@@ -9,16 +9,55 @@
   height: 3em;
 }
 
-.navIcon {
-  padding: 0;
-  height: fit-content;
-}
-
 .navContainer {
   width: 100%;
   padding: 0px 0px 0px 0px;
   display: flex;
   justify-content: space-between;
+}
+
+.navIcon {
+  padding: 0;
+  height: fit-content;
+}
+
+.navAnchor {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.profileDrop {
+  left: auto;
+  max-height: calc(100vh - 64px);
+  overflow-y: auto;
+  padding: 0.6em 0 0.6em 0;
+  right: 0;
+  width: 288px;
+}
+
+.padDrop {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.hrDrop {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.photo {
+  height: 3rem;
+  border-radius: 25px;
+}
+
+.job {
+  margin-bottom: 0.5em;
+}
+
+.btnDropProfile {
+  width: 100%;
+  font-size: 0.9em;
+  text-align: center;
 }
 
 u {

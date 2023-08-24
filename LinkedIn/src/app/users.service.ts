@@ -21,7 +21,7 @@ export class UsersService {
     return this.http.get<IUser[]>(apiUrl);
   }
 
-  // Get my profule
+  // Get my profile
   getSingleUser(): Observable<IUser> {
     const apiUrl = 'https://striveschool-api.herokuapp.com/api/profile/me';
     return this.http.get<IUser>(apiUrl);
