@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { IPost } from '../Components/Interfaces/post';
-import { UsersService } from '../users.service';
-import { PostsService } from '../posts.service';
+import { IPost } from '../Interfaces/post';
+import { UsersService } from '../../users.service';
+import { PostsService } from '../../posts.service';
 
 @Component({
   selector: 'app-post',
@@ -11,7 +11,7 @@ import { PostsService } from '../posts.service';
   styleUrls: ['./post.component.scss'],
 })
 export class PostComponent {
-  @ViewChild('content') content!: any;
+  // @ViewChild('content') content!: any;
 
   isPostPage: boolean = false;
   newPost: Partial<IPost> = {
@@ -68,13 +68,13 @@ export class PostComponent {
   }
 
   // Funzione sezione esperienze
-  buttonHandler() {
-    if (this.isPostPage) {
-      this.open(this.content);
-    } else {
-      this.router.navigate(['/post']);
-    }
-  }
+  // buttonHandler() {
+  //   if (this.isPostPage) {
+  //     this.open(this.content);
+  //   } else {
+  //     this.router.navigate(['/post']);
+  //   }
+  // }
 
   createPost() {
     this.usersSVC.getSingleUser().subscribe(
@@ -98,18 +98,18 @@ export class PostComponent {
     this.modalService.dismissAll();
   }
 
-  @ViewChild('content') modalContent!: any;
+  // @ViewChild('content') modalContent!: any;
 
-  openModifyModal(postId: string) {
-    const selectedPost = this.post.find(
-      (post: { _id: string }) => post._id === postId
-    );
-    if (selectedPost) {
-      this.newPost = { ...selectedPost };
-      this.selectedPostId = postId;
-      this.modalService.open(this.modalContent, { size: 'lg' });
-    }
-  }
+  // openModifyModal(postId: string) {
+  //   const selectedPost = this.post.find(
+  //     (post: { _id: string }) => post._id === postId
+  //   );
+  //   if (selectedPost) {
+  //     this.newPost = { ...selectedPost };
+  //     this.selectedPostId = postId;
+  //     this.modalService.open(this.modalContent, { size: 'lg' });
+  //   }
+  // }
 
   // Method to modify an experience
   modifyMyPost(postId: string, formData: Partial<IPost>): void {
@@ -170,8 +170,9 @@ export class PostComponent {
     return `${years} years, ${months % 12} months`;
   }
 }
-function ViewChild(
-  arg0: string
-): (target: PostComponent, propertyKey: 'content') => void {
-  throw new Error('Function not implemented.');
-}
+
+// function ViewChild(
+//   arg0: string
+// ): (target: PostComponent, propertyKey: 'content') => void {
+//   throw new Error('Function not implemented.');
+// }

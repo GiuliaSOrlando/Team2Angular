@@ -1,7 +1,7 @@
 import { ExperienceService } from './../../experience.service';
 import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { IExperience } from '../Interfaces/experience';
 import { UsersService } from 'src/app/users.service';
 
