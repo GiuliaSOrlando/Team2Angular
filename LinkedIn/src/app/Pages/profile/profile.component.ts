@@ -10,7 +10,9 @@ import { UsersService } from 'src/app/users.service';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent {
-  constructor(private userSVC: UsersService, private modalService: NgbModal) {}
+  constructor(private userSVC: UsersService, private modalService: NgbModal) {
+    this.randomNum = Math.floor(Math.random() * 100) + 1;
+  }
   userId: string = '';
   user!: IUser;
   name: string = '';
@@ -21,6 +23,7 @@ export class ProfileComponent {
   area: string = '';
   fullName: string = '';
   users: IUser[] = [];
+  randomNum!: number;
 
   ngOnInit() {
     this.getMyProfile();

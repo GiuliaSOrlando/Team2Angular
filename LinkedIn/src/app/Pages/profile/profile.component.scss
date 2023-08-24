@@ -187,3 +187,29 @@ p {
 h5 {
   font-size: 1em;
 }
+
+// Aggiunte
+
+.analytics-container {
+  border: 1px solid rgb(192, 192, 192);
+  border-radius: 10px;
+  box-shadow: 2px 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding-bottom: 20px;
+  flex-direction: column;
+}
+
+.analytics-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 19px;
+}
+
+h5 {
+  font-size: 1.3em;
+}
+
+.analytics-img {
+  width: 40px;
+}
