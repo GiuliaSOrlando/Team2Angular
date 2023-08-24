@@ -19,7 +19,7 @@ export class PostComponent {
     text: '',
     username: '',
     createdAt: '',
-    updateAtAt: '',
+    updatedAt: '',
   };
   posts: IPost[] = [];
   post!: IPost;
@@ -51,9 +51,8 @@ export class PostComponent {
 
   getMyPost(userId: string): void {
     this.postSVC.getPost(userId).subscribe(
-      (data: IPost) => {
-        this.posts = [];
-        this.posts = this.posts.concat(data);
+      (data) => {
+        this.posts = data;
         console.log('Post list:', this.posts);
       },
       (error: any) => {
