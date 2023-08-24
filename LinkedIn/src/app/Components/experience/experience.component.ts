@@ -114,6 +114,13 @@ export class ExperienceComponent {
     }
   }
 
+  @ViewChild('creationmodal') creationmodal!: any;
+  openCreationModal() {
+    this.modalService.open(this.creationmodal, {
+      ariaLabelledBy: 'modal-basic-title',
+    });
+  }
+
   // Method to modify an experience
   modifyMyExperience(expId: string, formData: Partial<IExperience>): void {
     this.usersSVC.getSingleUser().subscribe(

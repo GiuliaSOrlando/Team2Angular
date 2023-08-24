@@ -18,7 +18,7 @@
               ngbDropdownToggle
             />
             <div ngbDropdownMenu aria-labelledby="plus">
-              <button ngbDropdownItem (click)="buttonHandler()">
+              <button ngbDropdownItem (click)="openCreationModal()">
                 Aggiungi posizione lavorativa
               </button>
               <button ngbDropdownItem>Aggiungi pausa lavorativa</button>
@@ -101,7 +101,56 @@
               />
             </div>
           </div>
-          <!-- More fields here: description, area, startDate, endDate -->
+          <div class="mb-3">
+            <label for="description">Descrizione</label>
+            <div class="input-group">
+              <input
+                type="text"
+                id="description"
+                class="form-control"
+                [(ngModel)]="newExperience.description"
+                name="description"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="area">Area</label>
+            <div class="input-group">
+              <input
+                type="text"
+                id="area"
+                class="form-control"
+                [(ngModel)]="newExperience.area"
+                name="area"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="startDate">Data di inizio</label>
+            <div class="input-group">
+              <input
+                type="date"
+                id="startDate"
+                class="form-control"
+                [(ngModel)]="newExperience.startDate"
+                name="startDate"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="endDate">Data di fine</label>
+            <div class="input-group">
+              <input
+                type="date"
+                id="endDate"
+                class="form-control"
+                [(ngModel)]="newExperience.endDate"
+                name="endDate"
+              />
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Create</button>
         </form>
       </div>
     </ng-template>
@@ -120,7 +169,7 @@
         ></button>
       </div>
       <div class="modal-body">
-        <form (ngSubmit)="createExperience()">
+        <form>
           <div class="mb-3">
             <label for="role">Lavoro</label>
             <div class="input-group">
@@ -189,7 +238,6 @@
               />
             </div>
           </div>
-          <button type="submit" class="btn btn-primary">Crea</button>
         </form>
       </div>
       <div class="modal-footer">
@@ -208,7 +256,7 @@
             modifyMyExperience(selectedExperienceId, newExperience)
           "
         >
-          Save
+          Salva
         </button>
       </div>
     </ng-template>
