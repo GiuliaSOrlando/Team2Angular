@@ -165,4 +165,15 @@ export class ExperienceComponent {
       }
     );
   }
+
+  calculateDateDifference(startDateStr: string, endDateStr: string) {
+    const start = new Date(startDateStr);
+    const end = new Date(endDateStr);
+
+    const timeDifference = end.getTime() - start.getTime();
+    const months = Math.floor(timeDifference / (1000 * 60 * 60 * 24 * 30));
+    const years = Math.floor(months / 12);
+
+    return `${years} years, ${months % 12} months`;
+  }
 }
