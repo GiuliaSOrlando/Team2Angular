@@ -11,9 +11,10 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ExperienceComponent } from './Components/experience/experience.component';
 import { AsideComponent } from './Components/aside/aside.component';
+import { PostComponent } from './post/post.component';
 
 @NgModule({
-  declarations: [AppComponent, ProfileComponent, NavbarComponent, ExperienceComponent, AsideComponent],
+  declarations: [AppComponent, ProfileComponent, NavbarComponent, ExperienceComponent, AsideComponent, PostComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
