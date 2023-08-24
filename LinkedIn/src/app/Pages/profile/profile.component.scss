@@ -78,10 +78,10 @@ button {
   margin-left: 20px;
 }
 
-p {
-  line-height: 0.2em;
-  margin: 2px;
-}
+// p {
+//   line-height: 0.2em;
+//   margin: 2px;
+// }
 
 .area {
   font-weight: 100;
@@ -162,6 +162,7 @@ p {
   z-index: 1;
   height: 95px;
 }
+
 .blocchi p {
   // margin-left: 20px;
   // margin-top: -7px;
@@ -184,6 +185,11 @@ p {
 .p {
   font-size: 0.8em;
 }
+
+.sizeP {
+  font-size: 0.9rem;
+}
+
 h5 {
   font-size: 1em;
 }
@@ -203,6 +209,7 @@ h5 {
 .analytics-row {
   flex-direction: column;
   display: flex;
+  margin: 18px;
 }
 
 .analytics-col {
@@ -211,15 +218,19 @@ h5 {
 
 .analytics-header {
   align-items: center;
-  margin: 19px;
+  margin-bottom: 10px;
 }
 
 h5 {
   font-size: 1.3em;
 }
 
+.analytics-eye-img {
+  height: 20px;
+}
+
 .analytics-img {
-  width: 40px;
+  height: 30px;
 }
 
 .resources-container {
