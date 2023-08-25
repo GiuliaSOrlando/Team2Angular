@@ -1,15 +1,20 @@
-<div *ngFor="let post of posts.slice(0, 3)">
-  <p class="border border-2 border-primary">{{ post.text }}</p>
-</div>
+<div class="container-post">
+  <div *ngFor="let post of posts.slice(0, 3)">
+    <p class="border border-2 border-primary">{{ post.text }}</p>
+  </div>
 
-<form (ngSubmit)="createMyPost()">
-  <input
-    type="text"
-    id="content"
-    class="form-control"
-    name="content"
-    [(ngModel)]="newPost.text"
-    placeholder="Scrivi il tuo post"
-  />
-  <button type="submit">Pubblica</button>
-</form>
+  <form (ngSubmit)="createMyPost()">
+    <input
+      type="text"
+      id="content"
+      class="form-control"
+      name="content"
+      [(ngModel)]="newPost.text"
+      placeholder="Scrivi il tuo post"
+    />
+    <button type="submit" class="btn btn-outline-primary rounded-pill">
+      Pubblica
+    </button>
+    <img class="pencil-plus" src="../../assets/pencil.png" alt="" />
+  </form>
+</div>
