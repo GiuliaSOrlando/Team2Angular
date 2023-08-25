@@ -1,78 +1,6 @@
-// import { Component } from '@angular/core';
-// import { ActivatedRoute, Router } from '@angular/router';
-// import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-// import { IPost } from '../Interfaces/post';
-// import { UsersService } from '../../users.service';
-// import { PostsService } from '../../posts.service';
-
-// @Component({
-//   selector: 'app-post',
-//   templateUrl: './post.component.html',
-//   styleUrls: ['./post.component.scss'],
-// })
-// export class PostComponent {
-// @ViewChild('content') content!: any;
-
-// isPostPage: boolean = false;
-// newPost: Partial<IPost> = {
-//   _id: '',
-//   text: '',
-//   username: '',
-//   createdAt: '',
-//   updatedAt: '',
-// };
-// posts: IPost[] = [];
-// post!: IPost;
-// selectedPostId!: string;
-
-// constructor(
-//   private modalService: NgbModal,
-//   private route: ActivatedRoute,
-//   private router: Router,
-//   private postSVC: PostsService,
-//   private usersSVC: UsersService
-// ) {
-//   this.route.url.subscribe((urlSegments) => {
-//     this.isPostPage = urlSegments[0]?.path === 'post';
-//   });
-// }
-
-// ngOnInit() {
-//   this.usersSVC.getOwnInfo().subscribe(
-//     (user) => {
-//       const userId = user._id;
-//       this.getMyPost(userId);
-//     },
-//     (error) => {
-//       console.error('Error fetching user data:', error);
-//     }
-//   );
-// }
-
-// getMyPost(userId: string): void {
-//   this.postSVC.getPost(userId).subscribe(
-//     (data) => {
-//       this.posts = data;
-//       console.log('Post list:', this.posts);
-//     },
-//     (error: any) => {
-//       console.error('Error:', error);
-//     }
-//   );
-// }
-
 // MODALE
 // open(content: any) {
 //   this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
-// }
-
-// Funzione sezione esperienze
-// buttonHandler() {
-//   if (this.isPostPage) {
-//     this.open(this.content);
-//   } else {
-//     this.router.navigate(['/post']);
-//   }
 // }
 
 // createPost() {
@@ -177,10 +105,8 @@
 // }
 
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IPost } from '../Interfaces/post';
-import { UsersService } from '../../users.service';
 import { PostsService } from '../../posts.service';
 
 @Component({
@@ -189,7 +115,28 @@ import { PostsService } from '../../posts.service';
   styleUrls: ['./post.component.scss'],
 })
 export class PostComponent {
-  onClick() {
-    console.log('ho cliccato');
+  constructor(private postSVC: PostsService) {}
+  posts!: IPost[];
+  post!: IPost;
+  text!: string;
+
+  ngOnInit() {
+    this.getPosts();
   }
+
+  getPosts() {
+    this.postSVC.getPost().subscribe(
+      (data) => {
+        this.posts = data;
+        console.log('Post list:', this.posts);
+      },
+      (error: any) => {
+        console.error('Error:', error);
+      }
+    );
+  }
+
+  // prendi la fetch col metodo post dal service e crea una funzione su quella base
+  // per la post hai bisogno di inviare dati, quindi fatti un form
+  // fai attenzione al data-binding
 }
