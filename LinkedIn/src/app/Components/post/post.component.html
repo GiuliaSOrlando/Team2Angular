@@ -1,21 +1,38 @@
-<div *ngFor="let post of posts.slice(0, 3)">
-  <p class="border border-2 border-primary">{{ post.text }}</p>
-  <button class="btn btn-primary" (click)="showComments(post._id)">
-    Show Comments
-  </button>
-  <div *ngFor="let comment of postCommentsMap[post._id]">
-    <p class="border border-2 border-secondary ml-4">{{ comment.comment }}</p>
-  </div>
-</div>
+<section class="container-post px-3 pt-3">
+  <h5>Attività</h5>
 
-<form (ngSubmit)="createMyPost()">
-  <input
-    type="text"
-    id="content"
-    class="form-control"
-    name="content"
-    [(ngModel)]="newPost.text"
-    placeholder="Scrivi il tuo post"
-  />
-  <button type="submit">Pubblica</button>
-</form>
+  <div *ngFor="let post of posts" class="post">
+    <div class="post-content">
+      <p id="post-header">
+        <span class="fw-lighter">Pubblicato da •</span>
+        <span>{{ post.username }}</span>
+      </p>
+      <p id="post-text">{{ post.text }}</p>
+    </div>
+    <button
+      class="btn btn-outline-dark rounded-pill"
+      (click)="showComments(post._id)"
+    >
+      Show Comments
+    </button>
+    <div *ngFor="let comment of postCommentsMap[post._id]">
+      <p class="ml-4">{{ comment.comment }}</p>
+    </div>
+    <hr />
+  </div>
+
+  <h6>Scrivi il tuo post</h6>
+  <form (ngSubmit)="createMyPost()">
+    <input
+      type="text"
+      id="content"
+      class="form-control form-post"
+      name="content"
+      [(ngModel)]="newPost.text"
+      placeholder="Scrivi il tuo post"
+    />
+    <button class="post-button btn btn-outline-primary" type="submit">
+      Pubblica
+    </button>
+  </form>
+</section>
