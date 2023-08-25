@@ -1,16 +1,12 @@
-<main>
-  <section>
-    <!-- Sezione centrale-->
-    <div class="central">
-      <h4>Post</h4>
-      <div class="post-container">
-        <p><strong>ID:</strong> {{ post._id }}</p>
-        <p><strong>Testo:</strong> {{ post.text }}</p>
-        <p><strong>Username:</strong> {{ post.username }}</p>
-        <p><strong>Creazione:</strong> {{ post.createdAt }}</p>
-        <p><strong>Aggiornamento:</strong> {{ post.updatedAt }}</p>
-        <p><strong>__v:</strong> {{ post.__v }}</p>
-      </div>
-    </div>
-  </section>
-</main>
+<div class="card" style="width: 18rem">
+  <div class="card-body">
+    <button type="button" class="btn btn-outline-primary">Crea un post</button>
+    <h5 class="card-title">Attività</h5>
+    <h6 class="card-subtitle mb-2 text-primary">Follower</h6>
+    <p class="card-text">Scrivi qui quello che vuoi scrivere</p>
+  </div>
+</div>
+
+<div *ngFor="let post of posts">
+  <p class="border border-2 border-primary">{{ post.text }}</p>
+</div>

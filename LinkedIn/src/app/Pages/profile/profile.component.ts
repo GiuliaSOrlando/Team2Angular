@@ -20,7 +20,7 @@ export class ProfileComponent {
     this.randomNumThird = Math.floor(Math.random() * 100) + 1;
   }
   userId: string = '';
-  user!: IUser;
+  user!: IUser | null;
   name: string = '';
   surname: string = '';
   email: string = '';
@@ -34,7 +34,15 @@ export class ProfileComponent {
   randomNumThird!: number;
 
   ngOnInit() {
-    this.getMyProfile();
+    this.route.paramMap.subscribe((params) => {
+      const id = params.get('id');
+      if (id !== null) {
+        this.userId = id;
+        this.getUserInfo();
+      } else {
+        this.getMyProfile();
+      }
+    });
   }
 
   getMyProfile() {
@@ -64,11 +72,13 @@ export class ProfileComponent {
     this.modalService.dismissAll();
   }
 
-  // Correggi la funzione per prendere le info del profilo dall'aside
   getUserInfo() {
     this.userSVC.getSpecificUser(this.userId).subscribe(
       (user: IUser) => {
         this.user = user;
+        this.name = user.name;
+        this.surname = user.surname;
+        this.title = user.title;
       },
       (error) => {
         console.error('Error fetching user:', error);

@@ -35,12 +35,25 @@
   border-radius: 18px;
 }
 
-#amici {
-  height: 500px;
+#third-box {
   width: 350px;
   border: 0.3px solid rgb(181, 179, 179);
   margin-top: 10px;
   border-radius: 18px;
+}
+
+#aside-people-link {
+  text-decoration: none;
+  color: black;
+}
+
+#aside-people-header {
+  font-weight: 600;
+}
+
+.aside-people-text {
+  line-height: 50%;
+  text-overflow: clip;
 }
 
 .footer {

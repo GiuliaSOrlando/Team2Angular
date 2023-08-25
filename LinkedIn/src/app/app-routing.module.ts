@@ -7,6 +7,7 @@ import { ResourcesComponent } from './Components/resources/resources.component';
 
 const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
+  { path: 'profile/:id', component: ProfileComponent },
   { path: 'experience', component: ExperienceComponent },
   { path: 'resources', component: ResourcesComponent },
   { path: 'post', component: PostComponent },
