@@ -1,4 +1,3 @@
-<app-comments></app-comments>
 <main>
   <header>
     <!-- Sezione superiore-->
@@ -345,12 +344,33 @@
       </div>
     </div>
   </div>
-  <section class="user-post">
+  <section class="container-post px-3 pt-3">
+    <h5>Attività</h5>
+
     <div *ngFor="let post of posts" class="post">
       <div class="post-content">
-        <p>{{ post.text }}</p>
+        <p id="post-header">
+          <span class="fw-lighter">Pubblicato da •</span>
+          <span>{{ post.username }}</span>
+        </p>
+        <p id="post-text">{{ post.text }}</p>
       </div>
+      <hr />
     </div>
+    <h6>Scrivi il tuo post</h6>
+    <form (ngSubmit)="createMyPost()">
+      <input
+        type="text"
+        id="content"
+        class="form-control form-post"
+        name="content"
+        [(ngModel)]="newPost.text"
+        placeholder="Scrivi il tuo post"
+      />
+      <button class="post-button btn btn-outline-primary" type="submit">
+        Pubblica
+      </button>
+    </form>
   </section>
   <app-experience></app-experience>
 </main>
