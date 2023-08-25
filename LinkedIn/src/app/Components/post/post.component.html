@@ -15,8 +15,8 @@
     >
       Show Comments
     </button>
-    <div *ngFor="let comment of postCommentsMap[post._id]">
-      <p class="ml-4">{{ comment.comment }}</p>
+    <div class="commentDiv" *ngFor="let comment of postCommentsMap[post._id]">
+      <p class="ml-4 ps-2">{{ comment.comment }}</p>
     </div>
     <hr />
   </div>
