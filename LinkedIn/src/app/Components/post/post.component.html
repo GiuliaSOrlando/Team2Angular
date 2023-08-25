@@ -1,20 +1,21 @@
-<div class="container-post">
-  <div *ngFor="let post of posts.slice(0, 3)">
-    <p class="border border-2 border-primary">{{ post.text }}</p>
+<div *ngFor="let post of posts.slice(0, 3)">
+  <p class="border border-2 border-primary">{{ post.text }}</p>
+  <button class="btn btn-primary" (click)="showComments(post._id)">
+    Show Comments
+  </button>
+  <div *ngFor="let comment of postCommentsMap[post._id]">
+    <p class="border border-2 border-secondary ml-4">{{ comment.comment }}</p>
   </div>
-
-  <form (ngSubmit)="createMyPost()">
-    <input
-      type="text"
-      id="content"
-      class="form-control"
-      name="content"
-      [(ngModel)]="newPost.text"
-      placeholder="Scrivi il tuo post"
-    />
-    <button type="submit" class="btn btn-outline-primary rounded-pill">
-      Pubblica
-    </button>
-    <img class="pencil-plus" src="../../assets/pencil.png" alt="" />
-  </form>
 </div>
+
+<form (ngSubmit)="createMyPost()">
+  <input
+    type="text"
+    id="content"
+    class="form-control"
+    name="content"
+    [(ngModel)]="newPost.text"
+    placeholder="Scrivi il tuo post"
+  />
+  <button type="submit">Pubblica</button>
+</form>

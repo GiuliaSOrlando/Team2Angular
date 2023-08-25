@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IPost } from '../Interfaces/post';
 import { PostsService } from '../../posts.service';
+import { CommentsService } from 'src/app/comments.service';
+import { IComments } from '../Interfaces/comments';
 
 @Component({
   selector: 'app-post',
@@ -9,16 +11,15 @@ import { PostsService } from '../../posts.service';
   styleUrls: ['./post.component.scss'],
 })
 export class PostComponent {
-  openModifyModal(arg0: any) {
-    throw new Error('Method not implemented.');
-  }
-  newPost: Partial<IPost> = { text: '' };
-  isExperiencePage: any;
-  experience: any;
-  constructor(private postSVC: PostsService) {}
+  constructor(
+    private postSVC: PostsService,
+    private commentsSVC: CommentsService
+  ) {}
   posts!: IPost[];
   post!: IPost;
   text!: string;
+  newPost: Partial<IPost> = { text: '' };
+  postCommentsMap: { [postId: string]: IComments[] } = {};
 
   ngOnInit() {
     this.getPosts();
@@ -32,6 +33,17 @@ export class PostComponent {
       },
       (error: any) => {
         console.error('Error:', error);
+      }
+    );
+  }
+
+  showComments(postId: string) {
+    this.commentsSVC.getCommentsForPost(postId).subscribe(
+      (comments: IComments[]) => {
+        this.postCommentsMap[postId] = comments;
+      },
+      (error) => {
+        console.error(`Error loading comments for post ${postId}:`, error);
       }
     );
   }

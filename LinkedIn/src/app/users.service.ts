@@ -44,12 +44,8 @@ export class UsersService {
     return this.http.put<IUser>(apiUrl, data);
   }
 
-  // updateUser(data: Partial<IUser>) {
-  //   const apiUrl = 'https://striveschool-api.herokuapp.com/api/profile/';
-  //   return this.http.put<IUser>(apiUrl, data).pipe(
-  //     tap((updatedUser) => {
-  //       this.user.next(updatedUser);
-  //     })
-  //   );
-  // }
+  getUsersByUsername(username: string): Observable<IUser[]> {
+    const apiUrl = `https://striveschool-api.herokuapp.com/api/profile/${username}`;
+    return this.http.get<IUser[]>(apiUrl);
+  }
 }
