@@ -1,6 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { IUser } from 'src/app/Components/Interfaces/user';
 import { UsersService } from 'src/app/users.service';
 
@@ -95,5 +95,11 @@ export class ProfileComponent {
   // MODALE
   open(content: any) {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
+  }
+
+  // CAROSELLO
+  scrollLeft(event: Event) {
+    const target = event.target as HTMLInputElement;
+    target.scrollLeft = 100;
   }
 }
