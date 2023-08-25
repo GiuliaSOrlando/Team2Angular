@@ -250,42 +250,24 @@
       </ng-template>
     </ngb-carousel> -->
     <!-- OLD -->
-    <div class="blocchi">
-      <svg
-        arrowLeft
-        xmlns="http://www.w3.org/2000/svg"
-        width="16"
-        height="16"
-        fill="currentColor"
-        class="bi bi-arrow-right-circle-fill"
-        viewBox="0 0 16 16"
-        (click)="scrollLeft($event)"
-      >
-        <path
-          d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"
-        />
-      </svg>
+    <div #blocchi class="blocchi">
+      <p (click)="slideRight(blocchi)">&#8594;</p>
       <div class="blocco1">
-        <div>
-          <p><b>Disponibile a lavorare</b></p>
-          <p>Ruoli di Sviluppatore front-end</p>
-          <p class="text-primary"><b>Mostra dettagli</b></p>
-        </div>
+        <p><b>Disponibile a lavorare</b></p>
+        <p>Ruoli di Sviluppatore front-end</p>
+        <p class="text-primary"><b>Mostra dettagli</b></p>
       </div>
       <div class="blocco2">
-        <div>
-          <p><b>Fai Sapere che stai facendo selezione e attrai</b></p>
-          <p>candidati qualificati.</p>
-          <p class="text-primary"><b>Inizia</b></p>
-        </div>
+        <p><b>Fai Sapere che stai facendo selezione e attrai</b></p>
+        <p>candidati qualificati.</p>
+        <p class="text-primary"><b>Inizia</b></p>
       </div>
       <div class="blocco3">
-        <div>
-          <p><b>Metti in risalto i servizi</b> e offri, così tu e la tua</p>
-          <p>azienda potrete apparire nei risultati di ricerca.</p>
-          <p class="text-primary"><b>Inizia</b></p>
-        </div>
+        <p><b>Metti in risalto i servizi</b> e offri, così tu e la tua</p>
+        <p>azienda potrete apparire nei risultati di ricerca.</p>
+        <p class="text-primary"><b>Inizia</b></p>
       </div>
+      <p (click)="slideLeft(blocchi)">&#8592;</p>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="26"

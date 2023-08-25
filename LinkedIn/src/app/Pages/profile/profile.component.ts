@@ -174,8 +174,12 @@ export class ProfileComponent {
   }
 
   // CAROSELLO
-  scrollLeft(event: Event) {
-    const target = event.target as HTMLInputElement;
-    target.scrollLeft = 100;
+  slideRight(element: HTMLElement) {
+    console.log(element);
+    element.scrollLeft = 500;
+  }
+  slideLeft(element: HTMLElement) {
+    console.log(element);
+    element.scrollLeft = -500;
   }
 }
