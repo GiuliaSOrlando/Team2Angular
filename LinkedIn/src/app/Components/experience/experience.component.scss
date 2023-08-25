@@ -5,20 +5,15 @@
 }
 
 .arrow-left {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  display: flex;
-  align-items: center;
   text-decoration: none;
   color: #333;
-  margin-right: 10px;
+  padding-left: 15px;
+  padding-top: 18px;
 }
 
 .central {
   background-color: white;
   width: 100%;
-  margin-top: 40px;
   flex: 1;
 }
 
@@ -27,7 +22,7 @@
   border-radius: 10px;
   box-shadow: 2px 1px 3px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
   flex-direction: column;
 }
 
@@ -71,7 +66,7 @@
 }
 
 .pencil-plus {
-  width: 30px;
+  height: 30px;
   cursor: pointer;
 }
 

@@ -1,5 +1,8 @@
-<section class="analytics-container">
+<section class="analytics-container" *ngIf="!isResourcesPage">
   <div class="analytics-row">
+    <a class="arrow-left" *ngIf="isResourcesPage" routerLink="/profile">
+      <p>&#8592;</p>
+    </a>
     <div class="col analytics-header">
       <h5>Risorse</h5>
       <div class="d-flex align-items-center">
@@ -43,26 +46,107 @@
         </div>
       </div>
       <!-- mostra tutte le risorse -->
-      <a href="">
-        <div class="show-all-resources d-flex justify-content-center">
-          <p class="m-1" *ngIf="!isResourcesPage" (click)="buttonHandler()">
-            Mostra tutte le risorse
+      <div class="show-all-resources d-flex justify-content-center">
+        <p class="m-1" *ngIf="!isResourcesPage" (click)="buttonHandler()">
+          Mostra tutte le risorse (3)
+        </p>
+      </div>
+      <hr *ngIf="isResourcesPage" />
+      <!--  i miei elementi -->
+      <div *ngIf="isResourcesPage" class="d-flex">
+        <img
+          class="analytics-img"
+          src="../../../assets/savedelements.png"
+          alt=""
+        />
+        <div class="d-flex flex-column ps-2">
+          <p class="fw-semibold mb-1">I miei elementi</p>
+          <p class="sizeP mb-1">
+            Monitora le tue offerte di lavoro, i corsi e gli articoli.
           </p>
         </div>
-      </a>
-      <!-- <div class="d-flex">
-          <img
-            class="analytics-img"
-            src="../../../assets/savedelements.png"
-            alt=""
-          />
-          <div class="d-flex flex-column ps-2">
-            <p class="fw-semibold mb-1">I miei elementi</p>
-            <p class="sizeP mb-1">
-              Monitora le tue offerte di lavoro, i corsi e gli articoli.
-            </p>
-          </div>
-        </div> -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ViSUALIZZAZIONE SU COMPONENTE RISORSE -->
+<section
+  class="analytics-container"
+  *ngIf="isResourcesPage"
+  [style.display]="'flex'"
+  [style.justify-content]="'center'"
+  [style.width.%]="'60'"
+  [style.margin]="'auto'"
+  [style.margin-top]="'2em'"
+>
+  <div class="analytics-row">
+    <a class="arrow-left" *ngIf="isResourcesPage" routerLink="/profile">
+      <p>&#8592;</p>
+    </a>
+    <div class="col analytics-header">
+      <h5>Risorse</h5>
+      <div class="d-flex align-items-center">
+        <img
+          class="analytics-eye-img"
+          src="../../../assets/analytics-eye.png"
+          alt=""
+        />
+        <p class="fs-6 mb-0">Solo per te</p>
+      </div>
+    </div>
+    <!-- creazione contenuti -->
+    <div class="risources-col d-flex">
+      <div class="d-flex">
+        <img
+          class="analytics-img"
+          src="../../../assets/resource-content.png"
+          alt=""
+        />
+        <div class="d-flex flex-column ps-2">
+          <p class="fw-semibold mb-1">Modalità creazione di contenuti</p>
+          <p class="sizeP mb-1">
+            Fatti scoprire, metti in risalto i contenuti sul tuo profilo e
+            accedi agli strumenti di creazione
+          </p>
+        </div>
+      </div>
+      <hr />
+      <!--  la mia rete -->
+      <div class="d-flex">
+        <img
+          class="analytics-img"
+          src="../../../assets/analytics-people.png"
+          alt=""
+        />
+        <div class="d-flex flex-column ps-2">
+          <p class="fw-semibold mb-1">La mia rete</p>
+          <p class="sizeP mb-1">
+            Salva e gestisci i tuoi collegamenti e interessi.
+          </p>
+        </div>
+      </div>
+      <!-- mostra tutte le risorse -->
+      <div class="show-all-resources d-flex justify-content-center">
+        <p class="m-1" *ngIf="!isResourcesPage" (click)="buttonHandler()">
+          Mostra tutte le risorse (3)
+        </p>
+      </div>
+      <hr *ngIf="isResourcesPage" />
+      <!--  i miei elementi -->
+      <div *ngIf="isResourcesPage" class="d-flex">
+        <img
+          class="analytics-img"
+          src="../../../assets/savedelements.png"
+          alt=""
+        />
+        <div class="d-flex flex-column ps-2">
+          <p class="fw-semibold mb-1">I miei elementi</p>
+          <p class="sizeP mb-1">
+            Monitora le tue offerte di lavoro, i corsi e gli articoli.
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </section>

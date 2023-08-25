@@ -18,6 +18,7 @@ export class PostComponent {
   posts!: IPost[];
   post!: IPost;
   text!: string;
+  newPost: Partial<IPost> = { text: '' };
   postCommentsMap: { [postId: string]: IComments[] } = {};
 
   ngOnInit() {
@@ -45,5 +46,26 @@ export class PostComponent {
         console.error(`Error loading comments for post ${postId}:`, error);
       }
     );
+  }
+
+  createMyPost() {
+    this.postSVC.getPost().subscribe((postlist) => {
+      this.posts = postlist;
+    });
+    this.postSVC.createPost(this.newPost).subscribe(
+      (response) => {
+        console.log('response:', response);
+        this.posts.push(response);
+        console.log('post dopo push', this.posts);
+        console.log('il nuovo post:', this.newPost);
+      },
+      (error) => {
+        console.error('Error creating experience:', error);
+      }
+    );
+
+    (error: any) => {
+      console.error('Error fetching user data:', error);
+    };
   }
 }

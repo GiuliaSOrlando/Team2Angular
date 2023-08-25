@@ -1,4 +1,4 @@
-<div class="experience-container">
+<div class="experience-container" *ngIf="!isExperiencePage">
   <div class="experience-header">
     <a class="arrow-left" *ngIf="isExperiencePage" routerLink="/profile">
       <p>&#8592;</p>
@@ -60,6 +60,287 @@
           alt=""
           (click)="openModifyModal(experience._id)"
         />
+      </div>
+    </div>
+    <!--Modale dell'icona plus-->
+    <ng-template #creationmodal let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">
+          Aggiungi posizione lavorativa
+        </h4>
+        <button
+          type="button"
+          class="btn-close"
+          aria-label="Close"
+          (click)="modal.dismiss('Cross click')"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="createExperience()">
+          <div class="mb-3">
+            <label for="role">Lavoro</label>
+            <div class="input-group">
+              <input
+                type="text"
+                id="role"
+                class="form-control"
+                [(ngModel)]="newExperience.role"
+                name="role"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="company">Azienda</label>
+            <div class="input-group">
+              <input
+                type="text"
+                id="company"
+                class="form-control"
+                [(ngModel)]="newExperience.company"
+                name="company"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="description">Descrizione</label>
+            <div class="input-group">
+              <input
+                type="text"
+                id="description"
+                class="form-control"
+                [(ngModel)]="newExperience.description"
+                name="description"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="area">Area</label>
+            <div class="input-group">
+              <input
+                type="text"
+                id="area"
+                class="form-control"
+                [(ngModel)]="newExperience.area"
+                name="area"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="startDate">Data di inizio</label>
+            <div class="input-group">
+              <input
+                type="date"
+                id="startDate"
+                class="form-control"
+                [(ngModel)]="newExperience.startDate"
+                name="startDate"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="endDate">Data di fine</label>
+            <div class="input-group">
+              <input
+                type="date"
+                id="endDate"
+                class="form-control"
+                [(ngModel)]="newExperience.endDate"
+                name="endDate"
+              />
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+      </div>
+    </ng-template>
+
+    <!--Modale dell'icona pencil-->
+    <ng-template #content let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">
+          Modifica presentazione
+        </h4>
+        <button
+          type="button"
+          class="btn-close"
+          aria-label="Close"
+          (click)="modal.dismiss('Cross click')"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="role">Lavoro</label>
+            <div class="input-group">
+              <input
+                type="text"
+                id="role"
+                class="form-control"
+                [(ngModel)]="newExperience.role"
+                name="role"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="company">Azienda</label>
+            <div class="input-group">
+              <input
+                type="text"
+                id="company"
+                class="form-control"
+                [(ngModel)]="newExperience.company"
+                name="company"
+              />
+            </div>
+            <label for="role">Descrizione</label>
+            <div class="input-group">
+              <input
+                type="text"
+                id="description"
+                class="form-control"
+                [(ngModel)]="newExperience.description"
+                name="description"
+              />
+            </div>
+            <label for="role">Area</label>
+            <div class="input-group">
+              <input
+                type="text"
+                id="area"
+                class="form-control"
+                [(ngModel)]="newExperience.area"
+                name="area"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="startDate">Data di inizio</label>
+            <div class="input-group">
+              <input
+                type="date"
+                id="startDate"
+                class="form-control"
+                [(ngModel)]="newExperience.startDate"
+                name="startDate"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="endDate">Data di fine</label>
+            <div class="input-group">
+              <input
+                type="date"
+                id="endDate"
+                class="form-control"
+                [(ngModel)]="newExperience.endDate"
+                name="endDate"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button
+          id="delete-button"
+          *ngIf="isExperiencePage"
+          (click)="deleteExperience(selectedExperienceId)"
+        >
+          Elimina esperienza
+        </button>
+        <button
+          type="button"
+          class="btn btn-outline-dark"
+          (click)="
+            modal.close('Save click');
+            modifyMyExperience(selectedExperienceId, newExperience)
+          "
+        >
+          Salva
+        </button>
+      </div>
+    </ng-template>
+  </div>
+</div>
+
+<!-- VISUALIZZAZIONE COMPONENTE EXPERIENCE -->
+<div
+  class="experience-container"
+  *ngIf="isExperiencePage"
+  [style.display]="'flex'"
+  [style.justify-content]="'center'"
+  [style.width.%]="'60'"
+  [style.margin]="'auto'"
+  [style.margin-top]="'2em'"
+>
+  <div class="experience-header">
+    <a class="arrow-left" *ngIf="isExperiencePage" routerLink="/profile">
+      <p>&#8592;</p>
+    </a>
+    <div class="central">
+      <div>
+        <div class="col d-flex justify-content-between ps-3 pe-3">
+          <div>
+            <h5>Experiences</h5>
+          </div>
+          <div ngbDropdown class="d-inline-block">
+            <img
+              id="plus"
+              class="pencil-plus"
+              src="../../assets/plus.png"
+              alt=""
+              ngbDropdownToggle
+            />
+            <div ngbDropdownMenu aria-labelledby="plus">
+              <button ngbDropdownItem (click)="openCreationModal()">
+                Aggiungi posizione lavorativa
+              </button>
+              <button ngbDropdownItem>Aggiungi pausa lavorativa</button>
+            </div>
+            <img
+              id="pencil"
+              *ngIf="!isExperiencePage"
+              class="pencil-plus"
+              src="../../assets/pencil.png"
+              alt=""
+              (click)="buttonHandler()"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngFor="let experience of experiences" class="experience-box">
+      <div company-img-container class="d-flex justify-content-between">
+        <div class="d-flex">
+          <img id="company-img" src="../../assets/ghost-company.png" alt="" />
+          <div id="experience-info-container">
+            <p id="experience-role">{{ experience.role }}</p>
+            <p>{{ experience.company }}</p>
+            <p class="experience-date-area-info">
+              {{ experience.startDate | date : "MMM yy" }} -
+              <span
+                >{{ experience.endDate | date : "MMM yy" }} •
+                {{
+                  calculateDateDifference(
+                    experience.startDate,
+                    experience.endDate
+                  )
+                }}
+              </span>
+            </p>
+            <p class="experience-date-area-info">{{ experience.area }}</p>
+            <p id="experience-description">{{ experience.description }}</p>
+          </div>
+        </div>
+        <div>
+          <img
+            *ngIf="isExperiencePage"
+            class="pencil-plus"
+            src="../../assets/pencil.png"
+            alt=""
+            (click)="openModifyModal(experience._id)"
+          />
+        </div>
       </div>
     </div>
     <!--Modale dell'icona plus-->
