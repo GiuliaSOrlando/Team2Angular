@@ -13,6 +13,9 @@ import { ExperienceComponent } from './Components/experience/experience.componen
 import { AsideComponent } from './Components/aside/aside.component';
 import { PostComponent } from './Components/post/post.component';
 import { ResourcesComponent } from './Components/resources/resources.component';
+import { CommentsComponent } from './Components/comments/comments.component';
+import { CommentsInterceptor } from './comments.interceptor';
+import { CommentsService } from './comments.service';
 
 @NgModule({
   declarations: [
@@ -23,6 +26,7 @@ import { ResourcesComponent } from './Components/resources/resources.component';
     AsideComponent,
     PostComponent,
     ResourcesComponent,
+    CommentsComponent,
   ],
   imports: [
     BrowserModule,
