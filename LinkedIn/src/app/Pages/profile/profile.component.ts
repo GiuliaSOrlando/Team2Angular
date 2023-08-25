@@ -15,6 +15,8 @@ import { IComments } from 'src/app/Components/Interfaces/comments';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent {
+  commentsSVC: any;
+  postCommentsMap: any;
   constructor(
     private userSVC: UsersService,
     private modalService: NgbModal,
@@ -49,6 +51,7 @@ export class ProfileComponent {
   randomNumSecond!: number;
   randomNumThird!: number;
   posts: IPost[] = [];
+  newPost: Partial<IPost> = { text: '' };
 
   private asideSubscription: Subscription | undefined;
   selectedUser: IUser | null = null;
@@ -181,5 +184,34 @@ export class ProfileComponent {
   slideLeft(element: HTMLElement) {
     console.log(element);
     element.scrollLeft = -500;
+  }
+
+  createMyPost() {
+    this.postsSVC.getPost().subscribe((postlist) => {
+      this.posts = postlist;
+    });
+    this.postsSVC.createPost(this.newPost).subscribe(
+      (response) => {
+        console.log('response:', response);
+        this.posts.push(response);
+        console.log('post dopo push', this.posts);
+        console.log('il nuovo post:', this.newPost);
+      },
+      (error) => {
+        console.error('Error creating experience:', error);
+      }
+    );
+
+    (error: any) => {
+      console.error('Error fetching user data:', error);
+    };
+  }
+
+  showComments(postId: string) {
+    this.commentsSVC
+      .getCommentsForPost(postId)
+      .subscribe((comments: IComments[]) => {
+        this.postCommentsMap[postId] = comments;
+      });
   }
 }
