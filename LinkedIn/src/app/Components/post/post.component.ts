@@ -115,6 +115,7 @@ import { PostsService } from '../../posts.service';
   styleUrls: ['./post.component.scss'],
 })
 export class PostComponent {
+  newPost: Partial<IPost> = { text: '' };
   constructor(private postSVC: PostsService) {}
   posts!: IPost[];
   post!: IPost;
@@ -136,7 +137,28 @@ export class PostComponent {
     );
   }
 
-  // prendi la fetch col metodo post dal service e crea una funzione su quella base
-  // per la post hai bisogno di inviare dati, quindi fatti un form
-  // fai attenzione al data-binding
+  createMyPost() {
+    this.postSVC.getPost().subscribe((postlist) => {
+      this.posts = postlist;
+    });
+    this.postSVC.createPost(this.newPost).subscribe(
+      (response) => {
+        console.log('response:', response);
+        this.posts.push(response);
+        console.log('post dopo push', this.posts);
+        console.log('il nuovo post:', this.newPost);
+      },
+      (error) => {
+        console.error('Error creating experience:', error);
+      }
+    );
+
+    (error: any) => {
+      console.error('Error fetching user data:', error);
+    };
+  }
 }
+
+// prendi la fetch col metodo post dal service e crea una funzione su quella base
+// per la post hai bisogno di inviare dati, quindi fatti un form
+// fai attenzione al data-binding
