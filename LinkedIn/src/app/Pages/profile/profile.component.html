@@ -3,7 +3,7 @@
     <!-- Sezione superiore-->
     <div class="sfondo"></div>
     <div class="photo">
-      <img src="{{ user.image }}" alt="" />
+      <img src="{{ user?.image }}" alt="" />
     </div>
     <div id="pencil-container">
       <img
@@ -16,10 +16,10 @@
     <!-- Fine sezione superiore-->
     <!-- Sezione centrale-->
     <div class="central">
-      <h4>{{ user.name }} {{ user.surname }}</h4>
-      <p class="job">{{ user.title }}</p>
+      <h4>{{ user?.name }} {{ user?.surname }}</h4>
+      <p class="job">{{ user?.title }}</p>
       <p class="area">
-        Abito a {{ user.area }} •
+        Abito a {{ user?.area }} •
         <button class="btn btn-link text-decoration-none" (click)="openModal()">
           Contact info
         </button>
@@ -98,7 +98,7 @@
       <!-- Modale info di contatto -->
       <ng-template #contactModal let-modal>
         <div class="modal-header">
-          <h4 class="modal-title">{{ user.name }} {{ user.surname }}</h4>
+          <h4 class="modal-title">{{ user?.name }} {{ user?.surname }}</h4>
           <button
             type="button"
             class="close"
@@ -110,8 +110,8 @@
         </div>
         <div class="modal-body">
           <h5>Contact Info</h5>
-          <p>Your profile: {{ user.username }}</p>
-          <p>Email: {{ user.email }}</p>
+          <p>Your profile: {{ user?.username }}</p>
+          <p>Email: {{ user?.email }}</p>
         </div>
         <div class="modal-footer">
           <button
@@ -344,7 +344,8 @@
       </div>
     </div>
   </div>
-  <app-post></app-post>
+  <!--<app-post></app-post>-->
+  <!--Sezione post disattivata, perchè gli errori facevano crashare il resto della pagina-->
   <app-experience></app-experience>
 </main>
 
